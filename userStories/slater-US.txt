@@ -1,0 +1,4 @@
+1. As a parent, I want to not have blood in games, so that my child doesn’t see blood.
+2. As a disabled player, I want to be able to customize the controls, so that I can play with one hand.
+3. As a power gamer, I want to see stats for the items, so that I can find the items that will get me the highest score.
+

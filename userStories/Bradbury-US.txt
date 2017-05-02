@@ -1,0 +1,6 @@
+As a user, I want to save a game and load a saved game from a list of saved games so I can create my
+own checkpoints.
+As a user, I want the interface to be fully accessible with just mouse/touch so I can use the game on
+mobile devices as well as stationary devices.
+As a user, I want three levels of difficulty and features for the AI so I can learn the game on low difficulty
+and have replay value from the higher difficulty.

@@ -1,0 +1,6 @@
+1) The system shall have an instructions button at the top right corner of every screen in the game.
+2) The system shall have 10 levels that the user can play.
+3) The system shall save the user’s progress every time he clicks the pause button or closes the game.
+4) The system shall allow the user to customize his figure in the game.
+5) The system shall allow the user to shoot in all 4 directions.
+

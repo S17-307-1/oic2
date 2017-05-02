@@ -1,0 +1,4 @@
+1. As a gamer, I want the ability to see other gamer’s scores, so that I have another thing to compete against besides myself.
+2. As a gamer, I want various levels of difficulty, so that the game does not get boring.
+3. As a beginning player, I want access to instructions, so that I can refer to them every
+time I get lost.

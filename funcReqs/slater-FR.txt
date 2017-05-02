@@ -1,0 +1,6 @@
+1. The system shall have selectable characters at the beginning of each level.
+2. The system shall have a tutorial level to introduce new players to the controls.
+3. The system shall allow players to pick from 3 control schemes.
+4. The system shall show the players percentage of the level complete at the beginning of each wave of enemies.
+5. The system shall allow the pick from 5 save slots.
+

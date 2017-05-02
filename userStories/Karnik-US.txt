@@ -1,0 +1,4 @@
+1) As a gamer, I want to be able to see how much time I have left in each round of the game, so that I know when to finish the game by.
+2) As a player, I want to be able to clearly see my enemies when they are on the screen, so that I know where to shoot.
+3) As a player, I want to get a different experience each time I play the game, so that I will want to play it multiple times.
+

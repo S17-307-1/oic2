@@ -1,0 +1,5 @@
+1.	The system shall display an indicator of the player’s score.
+2.	The system shall display an indicator of the current enemy wave.
+3.	The system shall update the user’s score in the leaderboard table after the user has lost.
+4.	The system shall allow the user to choose between different screen resolutions.
+5.	The system shall save the user’s graphics preferences across instances of the game.

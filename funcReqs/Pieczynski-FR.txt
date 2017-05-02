@@ -1,0 +1,5 @@
+The system shall display the scores of the top 10 gamers for that day on a leaderboard screen.
+The system shall increasingly become 5% more difficult for each level of the game.
+The system shall provide a link to a set of instructions on the top left corner of the screen.
+The system shall allow the user to save their progress by pressing the save button on the screen.
+The system shall display the number of lives a user has left every time the player dies.

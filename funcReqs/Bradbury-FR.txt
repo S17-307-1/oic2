@@ -1,0 +1,6 @@
+The system shall display the number of ice cream cones the user has delivered.
+
+The system shall support multi-player game modes.
+
+The system shall instruct the user in how the play the game through the use of several preset maps.
+The system shall pause and display a dialog every 30 minutes to remind the user to take a break.

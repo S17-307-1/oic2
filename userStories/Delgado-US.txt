@@ -1,0 +1,3 @@
+1. As a player, I want to gain experience points for defeating enemies so that I am rewarded for doing well.
+2. As a player, I want to remap buttons on my controller so that I can play in a way most comfortable for myself.
+3. As a player, I want to have access to a leaderboard so that I can see how I did compared to other players.
