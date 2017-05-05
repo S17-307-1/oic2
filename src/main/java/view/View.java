@@ -2,6 +2,7 @@ package view;
 
 import gui.GuiDivision;
 
+import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Input;
@@ -27,14 +28,12 @@ public abstract class View {
   abstract void initContinue();
   
   public void render(Graphics graphics) {
+    graphics.setBackground(Color.white);
     scene.render(graphics);
   }
   
-  /*
-   * We send left mouse presses due to past issues where you
-   * can only call input.isMousePressed(...) once
-   */
-  public void update(Input input, boolean isLeftMousePressed) {
-    scene.update(input, isLeftMousePressed);
+  public void update(int delta) {
+    Input input = gamecontainer.getInput();
+    scene.update(input, input.isMousePressed(Input.MOUSE_LEFT_BUTTON));
   }
 }

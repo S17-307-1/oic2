@@ -18,7 +18,7 @@ public class GraphicalString extends GuiElement {
   
   private String content;
   private Point2D location;
-  private Color color = Color.white;
+  private Color color = Color.black;
   private TrueTypeFont font;
 
   public GraphicalString(String id, String content, int x, int y, String fontName, int fontSize) {

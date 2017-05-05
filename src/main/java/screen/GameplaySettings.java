@@ -31,8 +31,7 @@ public class GameplaySettings extends BasicGameState {
   @Override
   public void update(GameContainer gamecontainer, StateBasedGame stateBasedGame, int delta)
       throws SlickException {
-    Input input = gamecontainer.getInput();
-    view.update(input, input.isMousePressed(Input.MOUSE_LEFT_BUTTON));
+    view.update(delta);
   }
 
   @Override
