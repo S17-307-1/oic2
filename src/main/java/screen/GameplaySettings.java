@@ -1,33 +1,38 @@
 package screen;
 
+import main.OperationIceCream;
+
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
-import main.OperationIceCream;
+import view.GameplaySettingsView;
+import view.View;
 
 public class GameplaySettings extends BasicGameState {
+  
+  View view = new GameplaySettingsView();
 
   @Override
-  public void init(GameContainer container, StateBasedGame game) throws SlickException {
-    // TODO Auto-generated method stub
-    
+  public void init(GameContainer gamecontainer, StateBasedGame stateBasedGame) 
+      throws SlickException {
+    view.init(gamecontainer, stateBasedGame);
   }
 
   @Override
-  public void render(GameContainer container, StateBasedGame game, Graphics g)
+  public void render(GameContainer gamecontainer, StateBasedGame stateBasedGame, Graphics graphics)
       throws SlickException {
-    // TODO Auto-generated method stub
-    
+    view.render(graphics);
   }
 
   @Override
-  public void update(GameContainer container, StateBasedGame game, int delta)
+  public void update(GameContainer gamecontainer, StateBasedGame stateBasedGame, int delta)
       throws SlickException {
-    // TODO Auto-generated method stub
-    
+    Input input = gamecontainer.getInput();
+    view.update(input, input.isMousePressed(Input.MOUSE_LEFT_BUTTON));
   }
 
   @Override

@@ -1,12 +1,11 @@
 package main;
 
-
-
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
 
+import screen.GameplaySettings;
 import screen.MainMenu;
 
 public class OperationIceCream extends StateBasedGame {
@@ -31,7 +30,8 @@ public class OperationIceCream extends StateBasedGame {
   
   public OperationIceCream(String name) {
     super(name);
-    this.addState(new MainMenu());
+    addState(new MainMenu());
+    addState(new GameplaySettings());
   }
 
   public static void main(String[] args) {
@@ -50,6 +50,7 @@ public class OperationIceCream extends StateBasedGame {
 
   @Override
   public void initStatesList(GameContainer container) throws SlickException {
-    this.enterState(MAIN_MENU);
+    //enterState(MAIN_MENU);
+    enterState(GAMEPLAY_SETTINGS);
   }
 }
