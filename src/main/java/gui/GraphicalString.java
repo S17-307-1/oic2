@@ -12,22 +12,26 @@ import org.newdawn.slick.TrueTypeFont;
 
 public class GraphicalString extends GuiElement {
   public static final int ALIGN_CENTER = -1;
-  public static final String DEFAULT_FONT = "Verdana";
-  public static final int FONTSIZE_HEADER = 32;
-  public static final int FONTSIZE_NORMAL = 24;
+  
+  public static final TrueTypeFont HEADER_FONT = 
+      new TrueTypeFont(new Font("Verdana", Font.BOLD, 32), true);
+  public static final TrueTypeFont DEFAULT_FONT = 
+      new TrueTypeFont(new Font("Verdana", Font.BOLD, 18), true);
+  public static final TrueTypeFont BUTTON_FONT = 
+      new TrueTypeFont(new Font("Verdana", Font.BOLD, 24), true);
   
   private String content;
   private Point2D location;
   private Color color = Color.black;
   private TrueTypeFont font;
 
-  public GraphicalString(String id, String content, int x, int y, String fontName, int fontSize) {
+  public GraphicalString(String id, String content, int x, int y, TrueTypeFont font) {
     super(id);
     this.content = content;
     location = new Point2D.Double(x, y);
     origin = new Point2D.Double(x, y);
     
-    font = new TrueTypeFont(new Font(fontName, Font.BOLD, fontSize), true);
+    this.font = font;
     
     if (x == ALIGN_CENTER) {
       this.location.setLocation(
