@@ -1,8 +1,8 @@
 package screen;
 
+import game.AssetLoader;
+
 import main.OperationIceCream;
-import view.InGameView;
-import view.View;
 
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
@@ -10,7 +10,8 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
-import game.AssetLoader;
+import view.InGameView;
+import view.View;
 
 public class InGame extends BasicGameState {
   
