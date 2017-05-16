@@ -1,4 +1,5 @@
 package game;
+
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.geom.Shape;
@@ -25,7 +26,7 @@ public abstract class Entity {
 	}
 
 	public abstract Vector2f getCenter();
-	
+
 	public int getWidth() {
 		return Math.round(boundingBox.getWidth());
 	}

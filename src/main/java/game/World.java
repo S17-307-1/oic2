@@ -37,12 +37,13 @@ public class World {
 		player.update(delta, this);
 		camera.update(player);
 		mapGenerator.generate();
-		
+
 		if (System.currentTimeMillis() - lastEnemySpawnTime > 1000f) {
 			lastEnemySpawnTime = System.currentTimeMillis();
 			Random rand = new Random();
 			Vector2f posOffset = new Vector2f(rand.nextInt(1000) - 500, rand.nextInt(1000) - 500);
-			entities.add(new Enemy(new Vector2f(player.getPosition().getX() + posOffset.getX(), player.getPosition().getY() + posOffset.getY())));
+			entities.add(new Enemy(new Vector2f(player.getPosition().getX() + posOffset.getX(),
+					player.getPosition().getY() + posOffset.getY())));
 		}
 
 		for (Iterator<Entity> iter = entities.iterator(); iter.hasNext();) {
@@ -132,7 +133,7 @@ public class World {
 	public int getNumTiles() {
 		return backgroundTiles.size();
 	}
-	
+
 	public List<BackgroundTile> getBackgroundTiles() {
 		return backgroundTiles;
 	}

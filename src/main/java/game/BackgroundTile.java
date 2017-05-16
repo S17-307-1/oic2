@@ -13,24 +13,19 @@ public class BackgroundTile {
 	public static final int TILE_SIZE = 64;
 
 	public BackgroundTile() {
-		int rand = (int)(Math.random() * 6);
+		int rand = (int) (Math.random() * 6);
 		Image img;
 		if (rand == 0) {
 			img = AssetLoader.getAsset(AssetName.TILE_1);
-		}
-		else if (rand == 1) {
+		} else if (rand == 1) {
 			img = AssetLoader.getAsset(AssetName.TILE_2);
-		}
-		else if (rand == 2) {
+		} else if (rand == 2) {
 			img = AssetLoader.getAsset(AssetName.TILE_3);
-		}
-		else if (rand == 3) {
+		} else if (rand == 3) {
 			img = AssetLoader.getAsset(AssetName.TILE_4);
-		}
-		else if (rand == 4) {
+		} else if (rand == 4) {
 			img = AssetLoader.getAsset(AssetName.TILE_5);
-		}
-		else {
+		} else {
 			img = AssetLoader.getAsset(AssetName.TILE_6);
 		}
 		sprite = scrambleImage(img);

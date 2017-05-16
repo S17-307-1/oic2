@@ -12,30 +12,28 @@ import view.LeaderboardsView;
 import view.View;
 
 public class Leaderboards extends BasicGameState {
-  
-  View view = new LeaderboardsView();
 
-  @Override
-  public void init(GameContainer gamecontainer, StateBasedGame stateBasedGame) 
-      throws SlickException {
-    view.init(gamecontainer, stateBasedGame);
-  }
+	View view = new LeaderboardsView();
 
-  @Override
-  public void render(GameContainer gamecontainer, StateBasedGame stateBasedGame, Graphics graphics)
-      throws SlickException {
-    view.render(graphics);
-  }
+	@Override
+	public void init(GameContainer gamecontainer, StateBasedGame stateBasedGame) throws SlickException {
+		view.init(gamecontainer, stateBasedGame);
+	}
 
-  @Override
-  public void update(GameContainer gamecontainer, StateBasedGame stateBasedGame, int delta)
-      throws SlickException {
-    view.update(delta);
-  }
+	@Override
+	public void render(GameContainer gamecontainer, StateBasedGame stateBasedGame, Graphics graphics)
+			throws SlickException {
+		view.render(graphics);
+	}
 
-  @Override
-  public int getID() {
-    return OperationIceCream.LEADERBOARDS;
-  }
+	@Override
+	public void update(GameContainer gamecontainer, StateBasedGame stateBasedGame, int delta) throws SlickException {
+		view.update(delta);
+	}
+
+	@Override
+	public int getID() {
+		return OperationIceCream.LEADERBOARDS;
+	}
 
 }

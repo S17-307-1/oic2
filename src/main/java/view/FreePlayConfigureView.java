@@ -27,11 +27,11 @@ public class FreePlayConfigureView extends View {
 		titleBar.addComponent(tempButton);
 		scene.addComponent(titleBar);
 	}
-	
+
 	@Override
 	public void update(int delta) {
 		world.update(delta);
-		
+
 	}
 
 	@Override

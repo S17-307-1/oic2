@@ -13,27 +13,27 @@ import org.newdawn.slick.state.StateBasedGame;
  * facilitate MVC design
  */
 public abstract class View {
-  StateBasedGame stateBasedGame;
-  GameContainer gamecontainer;
-  
-  GuiDivision scene = new GuiDivision("default-scene");
-  
-  public void init(GameContainer gamecontainer, StateBasedGame stateBasedGame) {
-    this.stateBasedGame = stateBasedGame;
-    this.gamecontainer = gamecontainer;
-    
-    initContinue();
-  }
-  
-  abstract void initContinue();
-  
-  public void render(Graphics graphics) {
-    graphics.setBackground(Color.white);
-    scene.render(graphics);
-  }
-  
-  public void update(int delta) {
-    Input input = gamecontainer.getInput();
-    scene.update(input, input.isMousePressed(Input.MOUSE_LEFT_BUTTON));
-  }
+	StateBasedGame stateBasedGame;
+	GameContainer gamecontainer;
+
+	GuiDivision scene = new GuiDivision("default-scene");
+
+	public void init(GameContainer gamecontainer, StateBasedGame stateBasedGame) {
+		this.stateBasedGame = stateBasedGame;
+		this.gamecontainer = gamecontainer;
+
+		initContinue();
+	}
+
+	abstract void initContinue();
+
+	public void render(Graphics graphics) {
+		graphics.setBackground(Color.white);
+		scene.render(graphics);
+	}
+
+	public void update(int delta) {
+		Input input = gamecontainer.getInput();
+		scene.update(input, input.isMousePressed(Input.MOUSE_LEFT_BUTTON));
+	}
 }

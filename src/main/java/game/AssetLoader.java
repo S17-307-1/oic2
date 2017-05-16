@@ -1,4 +1,5 @@
 package game;
+
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 
@@ -12,38 +13,37 @@ public class AssetLoader {
 	private static Image tile5;
 	private static Image tile6;
 
-	
 	public enum AssetName {
 		PLAYER, ENEMY, TILE_1, TILE_2, TILE_3, TILE_4, TILE_5, TILE_6
 	}
-	
+
 	public static void loadAssets() {
 		try {
-			player = new Image("/res/player/manOld_gun.png");
+			player = new Image("res/player/manOld_gun.png");
 		} catch (SlickException e) {
 			e.printStackTrace();
 		}
 
 		try {
-			enemy = new Image("/res/enemy/robot1_hold.png");
+			enemy = new Image("res/enemy/robot1_hold.png");
 		} catch (SlickException e) {
 			e.printStackTrace();
 		}
 
 		try {
-			tile1 = new Image("/res/tile/tile_01.png");
-			tile2 = new Image("/res/tile/tile_02.png");
-			tile3 = new Image("/res/tile/tile_03.png");
-			tile4 = new Image("/res/tile/tile_04.png");
-			tile5 = new Image("/res/tile/tile_05.png");
-			tile6 = new Image("/res/tile/tile_06.png");
+			tile1 = new Image("res/tile/tile_01.png");
+			tile2 = new Image("res/tile/tile_02.png");
+			tile3 = new Image("res/tile/tile_03.png");
+			tile4 = new Image("res/tile/tile_04.png");
+			tile5 = new Image("res/tile/tile_05.png");
+			tile6 = new Image("res/tile/tile_06.png");
 		} catch (SlickException e) {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public static Image getAsset(AssetName name) {
-		switch(name) {
+		switch (name) {
 		case PLAYER:
 			return player;
 		case ENEMY:

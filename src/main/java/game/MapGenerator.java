@@ -7,7 +7,7 @@ import org.newdawn.slick.geom.Vector2f;
 public class MapGenerator {
 
 	public static final int GENERATOR_RADIUS = 512; // radius * 2 needs to be
-														// larger than biggest
+													// larger than biggest
 	// tile or else it'll spawn offscreen and then
 	// die :(
 	private World world;
