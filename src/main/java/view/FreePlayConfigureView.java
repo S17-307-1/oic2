@@ -5,11 +5,11 @@ import gui.GuiDivision;
 import gui.GuiString;
 import main.OperationIceCream;
 
-public class LeaderboardsView extends View {
+public class FreePlayConfigureView extends View {
   @Override
   void initContinue() {
     GuiDivision titleBar = new GuiDivision("title-bar");
-    GuiString tempString = new GuiString("title", "Leaderboards", 0, 0);
+    GuiString tempString = new GuiString("title", "Free Play", 0, 0);
     tempString.setFont(GuiString.HEADER_FONT);
     tempString.shift(
         (int) ((OperationIceCream.WINDOW_SIZE_X - tempString.getBoundingBox().getWidth()) / 2), 10);
@@ -17,7 +17,7 @@ public class LeaderboardsView extends View {
     
     Button tempButton = new Button("back-btn", "res/back.png", null, 10, 10);
     tempButton.setClickEvent(() -> {
-      stateBasedGame.enterState(OperationIceCream.MAIN_MENU);
+      stateBasedGame.enterState(OperationIceCream.GAME_MODE_SELECT);
     });
     titleBar.addComponent(tempButton);
     scene.addComponent(titleBar);
