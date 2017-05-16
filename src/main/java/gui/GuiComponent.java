@@ -9,41 +9,41 @@ import org.newdawn.slick.Input;
 
 public interface GuiComponent {
 
-	public String getId();
+  public String getId();
 
-	public void setParent(GuiComponent parent);
+  public void setParent(GuiComponent parent);
 
-	public void addComponent(GuiComponent other);
+  public void addComponent(GuiComponent other);
 
-	public void removeComponent(String otherId);
+  public void removeComponent(String otherId);
 
-	public GuiComponent getComponentById(String otherId);
+  public GuiComponent getComponentById(String otherId);
 
-	public void shift(int deltaX, int deltaY);
+  public void shift(int deltaX, int deltaY);
 
-	public void restoreOrigin();
+  public void restoreOrigin();
 
-	public void render(Graphics graphics);
+  public void render(Graphics graphics);
 
-	public boolean renderLast();
+  public boolean renderLast();
 
-	public void update(Input input, boolean isLeftMousePressed);
+  public void update(Input input, boolean isLeftMousePressed);
 
-	public void setValue(String value);
+  public void setValue(String value);
 
-	public void setColor(Color color);
+  public void setColor(Color color);
 
-	public void clear();
+  public void clear();
 
-	public void stateChanged();
+  public void stateChanged();
 
-	public Rectangle2D getBoundingBox();
+  public Rectangle2D getBoundingBox();
 
-	public Point2D getRelativeShift();
+  public Point2D getRelativeShift();
 
-	public void hide();
+  public void hide();
 
-	public void show();
+  public void show();
 
-	public boolean isHidden();
+  public boolean isHidden();
 }
