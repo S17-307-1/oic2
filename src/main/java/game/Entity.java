@@ -16,7 +16,7 @@ public abstract class Entity {
 
 	}
 
-	public abstract boolean update(int delta);
+	public abstract boolean update(int delta, World world);
 
 	public abstract void render(Graphics g);
 
@@ -24,19 +24,14 @@ public abstract class Entity {
 		return this.getBoundingBox() == null && this.getBoundingBox().intersects(entity.getBoundingBox());
 	}
 
+	public abstract Vector2f getCenter();
+	
 	public int getWidth() {
 		return Math.round(boundingBox.getWidth());
 	}
 
 	public int getHeight() {
 		return Math.round(boundingBox.getHeight());
-	}
-
-	public Vector2f getCenter() {
-		float centerX = position.getX() + boundingBox.getWidth() / 2f;
-		float centerY = position.getY() + boundingBox.getHeight() / 2f;
-
-		return new Vector2f(centerX, centerY);
 	}
 
 	public Vector2f getPosition() {
