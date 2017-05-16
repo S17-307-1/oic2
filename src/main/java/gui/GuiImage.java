@@ -14,7 +14,6 @@ import org.newdawn.slick.SlickException;
 public class GuiImage extends GuiElement {
   private static final Logger LOGGER = Logger.getLogger(GuiImage.class.getName());
 
-  private Point2D location;
   private Image image;
 
   public GuiImage(String id, String imageName, double coordX, double coordY) {

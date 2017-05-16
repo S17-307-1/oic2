@@ -2,6 +2,7 @@ package view;
 
 import gui.Button;
 import gui.GuiDivision;
+import gui.GuiImage;
 import gui.GuiString;
 import main.OperationIceCream;
 
@@ -22,35 +23,63 @@ public class GameModeSelectView extends View {
     titleBar.addComponent(tempButton);
     scene.addComponent(titleBar);
 
-    GuiDivision options = new GuiDivision("options");
-
-    tempButton = new Button("btn-1", "CAMPAIGN", 0, 0, 250);
+    GuiImage tempImage = new GuiImage("single-player", "res/single-player.png", 0, 0);
+    tempButton = new Button("btn-1", "CAMPAIGN", 
+        (int) (tempImage.getBoundingBox().getWidth() + 10), 0, 250);
+    tempButton.shift(0, (int) ((tempImage.getBoundingBox().getHeight() 
+        - tempButton.getBoundingBox().getHeight()) / 2.0));
     tempButton.setClickEvent(() -> {
       stateBasedGame.enterState(OperationIceCream.CAMPAIGN_CONFIG);
     });
-    options.addComponent(tempButton);
+    GuiDivision tempRow = new GuiDivision("row");
+    tempRow.addComponent(tempImage);
+    tempRow.addComponent(tempButton);
+    
+    GuiDivision options = new GuiDivision("options");
+    options.addComponent(tempRow);
 
-    tempButton =
-        new Button("btn-2", "FREE PLAY", 0, (int) (options.getBoundingBox().getHeight() + 10), 250);
+    tempImage = new GuiImage("single-player", "res/single-player.png", 0, 0);
+    tempButton = new Button("btn-2", "FREEPLAY", 
+        (int) (tempImage.getBoundingBox().getWidth() + 10), 0, 250);
+    tempButton.shift(0, (int) ((tempImage.getBoundingBox().getHeight() 
+        - tempButton.getBoundingBox().getHeight()) / 2.0));
     tempButton.setClickEvent(() -> {
       stateBasedGame.enterState(OperationIceCream.FREEPLAY_CONFIG);
     });
-    options.addComponent(tempButton);
+    tempRow = new GuiDivision("row");
+    tempRow.addComponent(tempImage);
+    tempRow.addComponent(tempButton);
+    tempRow.shift(0, (int) (options.getBoundingBox().getHeight() + 10));
+    options.addComponent(tempRow);
 
-    tempButton = new Button("btn-3", "MULTIPLAYER", 0,
-        (int) (options.getBoundingBox().getHeight() + 10), 250);
+    tempImage = new GuiImage("multi-player", "res/multi-player.png", 0, 0);
+    tempButton = new Button("btn-2", "MULTIPLAYER", 
+        (int) (tempImage.getBoundingBox().getWidth() + 10), 0, 250);
+    tempButton.shift(0, (int) ((tempImage.getBoundingBox().getHeight() 
+        - tempButton.getBoundingBox().getHeight()) / 2.0));
     tempButton.setClickEvent(() -> {
       stateBasedGame.enterState(OperationIceCream.MULTIPLAYER_CONFIG);
     });
-    options.addComponent(tempButton);
+    tempRow = new GuiDivision("row");
+    tempRow.addComponent(tempImage);
+    tempRow.addComponent(tempButton);
+    tempRow.shift(0, (int) (options.getBoundingBox().getHeight() + 10));
+    options.addComponent(tempRow);
 
-    tempButton =
-        new Button("btn-4", "TUTORIAL", 0, (int) (options.getBoundingBox().getHeight() + 10), 250);
+    tempImage = new GuiImage("tutorial", "res/tutorial.png", 0, 0);
+    tempButton = new Button("btn-2", "TUTORIAL", 
+        (int) (tempImage.getBoundingBox().getWidth() + 10), 0, 250);
+    tempButton.shift(0, (int) ((tempImage.getBoundingBox().getHeight() 
+        - tempButton.getBoundingBox().getHeight()) / 2.0));
     tempButton.setClickEvent(() -> {
-      // TODO set up tutorial game
+      //TODO tutorial setup
       stateBasedGame.enterState(OperationIceCream.IN_GAME);
     });
-    options.addComponent(tempButton);
+    tempRow = new GuiDivision("row");
+    tempRow.addComponent(tempImage);
+    tempRow.addComponent(tempButton);
+    tempRow.shift(0, (int) (options.getBoundingBox().getHeight() + 10));
+    options.addComponent(tempRow);
 
     options.shift(
         (int) ((OperationIceCream.WINDOW_SIZE_X - options.getBoundingBox().getWidth()) / 2.0), 500);

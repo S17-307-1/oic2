@@ -14,6 +14,8 @@ public class GuiString extends GuiElement {
       new TrueTypeFont(new Font("Dialog", Font.PLAIN, 14), true);
   public static final TrueTypeFont HEADER_FONT =
       new TrueTypeFont(new Font("Dialog", Font.BOLD, 32), true);
+  public static final TrueTypeFont TITLE_FONT =
+      new TrueTypeFont(new Font("Arial", Font.BOLD, 50), true);
   public static final TrueTypeFont BUTTON_FONT =
       new TrueTypeFont(new Font("Dialog", Font.BOLD, 28), true);
 

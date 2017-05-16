@@ -1,13 +1,12 @@
 package view;
 
-import org.newdawn.slick.Color;
-import org.newdawn.slick.Graphics;
-
 import game.World;
-import gui.Button;
 import gui.GuiDivision;
 import gui.GuiString;
 import main.OperationIceCream;
+
+import org.newdawn.slick.Color;
+import org.newdawn.slick.Graphics;
 
 public class InGameView extends View {
   private World world = new World();
