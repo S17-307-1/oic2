@@ -1,34 +1,37 @@
 package view;
 
 import gui.Button;
-import gui.GraphicalString;
 import gui.GuiDivision;
-
-import java.awt.geom.Point2D;
-
-import org.newdawn.slick.Color;
+import gui.GuiString;
+import main.OperationIceCream;
 
 public class MainMenuView extends View {
   
   public MainMenuView() {
-    scene = new GuiDivision("main-menu-view");
   }
 
   @Override
   void initContinue() {
     GuiDivision titleBar = new GuiDivision("title-bar");
-    titleBar.addComponent(new GraphicalString("title", "Main Menu", 
-        GraphicalString.ALIGN_CENTER, 20, 
-        GraphicalString.HEADER_FONT));
+    GuiString tempString = new GuiString("title", "Operation Ice-Cream", 0, 0);
+    tempString.setFont(GuiString.HEADER_FONT);
+    tempString.shift(
+        (int) ((OperationIceCream.WINDOW_SIZE_X - tempString.getBoundingBox().getWidth()) / 2), 10);
+    titleBar.addComponent(tempString);
     scene.addComponent(titleBar);
     
     GuiDivision options = new GuiDivision("options");
-    options.addComponent(new Button("sample-button", "SAMPLE BUTTON", 
-        GraphicalString.BUTTON_FONT, new Point2D.Double(100, 100), Button.DEFAULT_CURVE, 
-        Color.darkGray, Color.darkGray, gamecontainer));
-    options.addComponent(new Button("sample-button2", "BUTTON2", 
-        GraphicalString.DEFAULT_FONT, new Point2D.Double(100, 160), Button.DEFAULT_CURVE, 
-        Color.darkGray, Color.darkGray, gamecontainer));
+    Button tempButton = new Button("btn-1", "PLAY", 0, 0, 250);
+    options.addComponent(tempButton);
+    tempButton = new Button("btn-1", "SETTINGS", 0,
+        (int) (options.getBoundingBox().getHeight() + 10), 250);
+    options.addComponent(tempButton);
+    tempButton = new Button("btn-1", "LEADERBOARDS", 0,
+        (int) (options.getBoundingBox().getHeight() + 10), 250);
+    options.addComponent(tempButton);
+    
+    options.shift(
+        (int) ((OperationIceCream.WINDOW_SIZE_X - options.getBoundingBox().getWidth()) / 2.0), 500);
     scene.addComponent(options);
   }
 

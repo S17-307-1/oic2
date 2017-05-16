@@ -1,61 +1,38 @@
 package gui;
 
 import java.awt.geom.Point2D;
+import java.awt.geom.Rectangle2D;
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
 
 import org.newdawn.slick.Color;
-import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
-import org.newdawn.slick.TrueTypeFont;
+import org.newdawn.slick.geom.Rectangle;
 import org.newdawn.slick.geom.RoundedRectangle;
-import org.newdawn.slick.gui.MouseOverArea;
+import org.newdawn.slick.geom.Shape;
 
 public class Button extends GuiElement {
+  private static final Logger LOGGER = Logger.getLogger(Button.class.getName());
   private static Image NULL_IMAGE = null;
-  private static final int MARGIN_X = 10;
-  private static final int MARGIN_Y = 10;
-  private static final float BORDER_WIDTH = 4f;
-  public static final float DEFAULT_CURVE = 10f;
   
-  private MouseOverArea clickableArea;
+  private Shape clickableArea;
   private VoidLambdaNoArgs clickEvent;
   private ButtonGroupRadio buttonGroupRadio = null;
   private Image defaultImage;
   private Image activeImage;
-  private boolean isHidden = false;
-  private GameContainer gamecontainer;
-  private GraphicalString label;
-  private RoundedRectangle border = null;
-  private Color borderColor = Color.black;
+  private Image currentImage;
 
-  public Button(String id, MouseOverArea clickableArea, Image defaultImage, Image activeImage, 
-      GameContainer gamecontainer) {
+  public Button(String id, Shape clickableArea, Image defaultImage, Image activeImage) {
     super(id);
     this.clickableArea = clickableArea;
     this.defaultImage = defaultImage;
-    clickableArea.setNormalImage(defaultImage);
-    clickableArea.setMouseOverImage(defaultImage);
     this.activeImage = activeImage;
-    this.gamecontainer = gamecontainer;
+    currentImage = defaultImage;
+    location = new Point2D.Double(clickableArea.getX(), clickableArea.getY());
     origin = new Point2D.Double(clickableArea.getX(), clickableArea.getY());
-  }
-  
-  public Button(String id, String label, TrueTypeFont font, Point2D location, float cornerRadius, 
-      Color borderColor, Color color, GameContainer gamecontainer) {
-    super(id);
-    int labelX = (int) location.getX() + MARGIN_X;
-    int labelY = (int) location.getY() + MARGIN_Y;
-    this.label = new GraphicalString("", label, labelX, labelY, font);
-    this.label.setColor(color);
-    this.borderColor = borderColor;
-    
-    border = new RoundedRectangle((float) location.getX(), (float) location.getY(),
-        (float) (font.getWidth(label) + 2 * MARGIN_X), 
-        (float) (font.getHeight() + 2 * MARGIN_Y), cornerRadius, 15);
-    
-    clickableArea = new MouseOverArea(gamecontainer, nullImage(), border);
   }
   
   private Image nullImage() {
@@ -63,12 +40,61 @@ public class Button extends GuiElement {
       try {
         NULL_IMAGE = new Image("res/invisible.png");
       } catch (SlickException e) {
-        // TODO Auto-generated catch block
-        e.printStackTrace();
+        LOGGER.log(Level.FATAL, e.toString(), e);
       }
     }
-    
     return NULL_IMAGE;
+  }
+  
+  public void setVisibleLocation(int coordX, int coordY) {
+    location = new Point2D.Double(coordX, coordY);
+  }
+  
+  public Button(String id, String defaultImageName, String activeImageName, 
+      int coordX, int coordY) {
+    super(id);
+    try {
+      defaultImage = new Image(defaultImageName);
+      if (activeImageName == null) {
+        activeImage = defaultImage;
+      } else {
+        activeImage = new Image(activeImageName);
+      }
+      currentImage = defaultImage;
+    } catch (SlickException e) {
+      LOGGER.log(Level.FATAL, e.toString(), e);
+    }
+    
+    clickableArea = new Rectangle(coordX, coordY, 
+        defaultImage.getWidth(), defaultImage.getHeight());
+    location = new Point2D.Double(clickableArea.getX(), clickableArea.getY());
+    origin = new Point2D.Double(clickableArea.getX(), clickableArea.getY());
+  }
+  
+  public Button(String id, String label, int coordX, int coordY, int minWidth) {
+    super(id);
+    int labelWidth = Math.max(GuiString.BUTTON_FONT.getWidth(label), minWidth);
+    int labelHeight = GuiString.BUTTON_FONT.getHeight();
+    try {
+      defaultImage = new Image(labelWidth + 20, labelHeight + 20);
+      Graphics graphics = defaultImage.getGraphics();
+      graphics.setColor(Color.black);
+      graphics.setFont(GuiString.BUTTON_FONT);
+      graphics.drawString(label, (labelWidth - GuiString.BUTTON_FONT.getWidth(label) + 20) / 2, 8);
+      graphics.setLineWidth(4f);
+      RoundedRectangle rect = new RoundedRectangle(2, 2, labelWidth + 16, labelHeight + 16, 10f);
+      graphics.draw(rect);
+      graphics.flush();
+      activeImage = defaultImage;
+    } catch (SlickException e) {
+      LOGGER.log(Level.FATAL, e.toString(), e);
+    }
+    currentImage = defaultImage;
+    
+    clickableArea = new Rectangle(coordX, coordY, 
+        defaultImage.getWidth(), defaultImage.getHeight());
+    location = new Point2D.Double(clickableArea.getX(), clickableArea.getY());
+    origin = new Point2D.Double(clickableArea.getX(), clickableArea.getY());
   }
   
   public void addToRadioGroup(ButtonGroupRadio buttonGroupRadio) {
@@ -80,15 +106,15 @@ public class Button extends GuiElement {
     this.clickEvent = clickEvent;
   }
 
-  private boolean isClicked() {
+  private boolean isClicked(float mouseX, float mouseY) {
     if (isHidden) {
       return false;
     }
-    return clickableArea.isMouseOver();
+    return clickableArea.contains(mouseX, mouseY);
   }
 
   private void callClickEvent() {
-    if (!isHidden) {
+    if (!isHidden && clickEvent != null) {
       clickEvent.fn();
       activate();
     }
@@ -98,56 +124,42 @@ public class Button extends GuiElement {
     if (buttonGroupRadio != null) {
       buttonGroupRadio.deselectButtons();
     }
-    clickableArea.setNormalImage(activeImage);
-    clickableArea.setMouseOverImage(activeImage);
+    currentImage = activeImage;
   }
 
   void deactivate() {
-    clickableArea.setNormalImage(defaultImage);
-    clickableArea.setMouseOverImage(defaultImage);
+    currentImage = defaultImage;
   }
 
-  void setIsHidden(boolean isHidden) {
+  public void setIsHidden(boolean isHidden) {
     this.isHidden = isHidden;
-  }
-  
-  private void drawBorder(Graphics graphics) {
-    final Color saveColor = graphics.getColor();
-    final float saveLineWidth = graphics.getLineWidth();
-    graphics.setColor(borderColor);
-    graphics.setLineWidth(BORDER_WIDTH);
-    graphics.draw(border);
-    graphics.setColor(saveColor);
-    graphics.setLineWidth(saveLineWidth);
   }
 
   @Override
   public void render(Graphics graphics) {
     if (!isHidden) {
-      clickableArea.render(gamecontainer, graphics);
-      if (border != null) {
-        drawBorder(graphics);
-        label.render(graphics);
-      }
+      graphics.drawImage(currentImage, (float) location.getX(), (float) location.getY());
     }
   }
   
   @Override
   public void shift(int deltaX, int deltaY) {
-    int x = clickableArea.getX();
-    int y = clickableArea.getY();
-    clickableArea.setLocation(x + deltaX, y + deltaY);
+    clickableArea.setLocation(clickableArea.getX() + deltaX, clickableArea.getY() + deltaY);
+    location.setLocation(clickableArea.getX(), clickableArea.getY());
   }
 
   @Override
   public void restoreOrigin() {
     clickableArea.setLocation((float)origin.getX(), (float)origin.getY());
+    location.setLocation(clickableArea.getX(), clickableArea.getY());
   }
 
   @Override
   public void update(Input input, boolean isLeftMousePressed) {
     if (isLeftMousePressed) {
-      if (isClicked()) {
+      Point2D temp = getRelativeShift();
+      if (isClicked((float) (input.getMouseX() - temp.getX()), 
+          (float) (input.getMouseY() - temp.getY()))) {
         callClickEvent();
       }
     }
@@ -159,5 +171,14 @@ public class Button extends GuiElement {
 
   @Override
   public void setColor(Color color) {
+  }
+
+  @Override
+  public Rectangle2D getBoundingBox() {
+    return new Rectangle2D.Double(
+        clickableArea.getX(),
+        clickableArea.getY(),
+        clickableArea.getWidth(),
+        clickableArea.getHeight());
   }
 }

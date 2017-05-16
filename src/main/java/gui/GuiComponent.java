@@ -1,5 +1,8 @@
 package gui;
 
+import java.awt.geom.Point2D;
+import java.awt.geom.Rectangle2D;
+
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Input;
@@ -7,6 +10,8 @@ import org.newdawn.slick.Input;
 public interface GuiComponent {
   
   public String getId();
+  
+  public void setParent(GuiComponent parent);
 
   public void addComponent(GuiComponent other);
   
@@ -29,4 +34,16 @@ public interface GuiComponent {
   public void setColor(Color color);
   
   public void clear();
+  
+  public void stateChanged();
+  
+  public Rectangle2D getBoundingBox();
+  
+  public Point2D getRelativeShift();
+  
+  public void hide();
+  
+  public void show();
+  
+  public boolean isHidden();
 }

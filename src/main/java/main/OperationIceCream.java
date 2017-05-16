@@ -1,5 +1,8 @@
 package main;
 
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.SlickException;
@@ -44,8 +47,14 @@ public class OperationIceCream extends StateBasedGame {
     addState(new PostGameStatistics());
     addState(new VideoSettings());
   }
+  
+  private static void configureLogger() {
+    String log4jConfPath = "log4j.properties";
+    PropertyConfigurator.configure(log4jConfPath);
+  }
 
   public static void main(String[] args) {
+    configureLogger();
     AppGameContainer appGameContainer;
     try {
       appGameContainer = new AppGameContainer(new OperationIceCream(GAME_NAME));
