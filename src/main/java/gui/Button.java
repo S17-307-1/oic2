@@ -16,7 +16,6 @@ import org.newdawn.slick.geom.Shape;
 
 public class Button extends GuiElement {
   private static final Logger LOGGER = Logger.getLogger(Button.class.getName());
-  private static Image NULL_IMAGE = null;
   
   private Shape clickableArea;
   private VoidLambdaNoArgs clickEvent;
@@ -33,17 +32,6 @@ public class Button extends GuiElement {
     currentImage = defaultImage;
     location = new Point2D.Double(clickableArea.getX(), clickableArea.getY());
     origin = new Point2D.Double(clickableArea.getX(), clickableArea.getY());
-  }
-  
-  private Image nullImage() {
-    if (NULL_IMAGE == null) {
-      try {
-        NULL_IMAGE = new Image("res/invisible.png");
-      } catch (SlickException e) {
-        LOGGER.log(Level.FATAL, e.toString(), e);
-      }
-    }
-    return NULL_IMAGE;
   }
   
   public void setVisibleLocation(int coordX, int coordY) {

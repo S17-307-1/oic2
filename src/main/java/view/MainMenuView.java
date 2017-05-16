@@ -6,10 +6,6 @@ import gui.GuiString;
 import main.OperationIceCream;
 
 public class MainMenuView extends View {
-  
-  public MainMenuView() {
-  }
-
   @Override
   void initContinue() {
     GuiDivision titleBar = new GuiDivision("title-bar");
@@ -21,13 +17,25 @@ public class MainMenuView extends View {
     scene.addComponent(titleBar);
     
     GuiDivision options = new GuiDivision("options");
+    
     Button tempButton = new Button("btn-1", "PLAY", 0, 0, 250);
+    tempButton.setClickEvent(() -> {
+      stateBasedGame.enterState(OperationIceCream.GAME_MODE_SELECT);
+    });
     options.addComponent(tempButton);
+    
     tempButton = new Button("btn-1", "SETTINGS", 0,
         (int) (options.getBoundingBox().getHeight() + 10), 250);
+    tempButton.setClickEvent(() -> {
+      stateBasedGame.enterState(OperationIceCream.GAMEPLAY_SETTINGS);
+    });
     options.addComponent(tempButton);
+    
     tempButton = new Button("btn-1", "LEADERBOARDS", 0,
         (int) (options.getBoundingBox().getHeight() + 10), 250);
+    tempButton.setClickEvent(() -> {
+      stateBasedGame.enterState(OperationIceCream.LEADERBOARDS);
+    });
     options.addComponent(tempButton);
     
     options.shift(
