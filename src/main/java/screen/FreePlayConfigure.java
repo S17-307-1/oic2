@@ -6,20 +6,17 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
-import game.AssetLoader;
 import main.OperationIceCream;
 import view.FreePlayConfigureView;
 import view.View;
 
 public class FreePlayConfigure extends BasicGameState {
 
-  View view;
+  View view = new FreePlayConfigureView();
 
   @Override
   public void init(GameContainer gamecontainer, StateBasedGame stateBasedGame)
       throws SlickException {
-    AssetLoader.loadAssets();
-    view = new FreePlayConfigureView();
     view.init(gamecontainer, stateBasedGame);
   }
 

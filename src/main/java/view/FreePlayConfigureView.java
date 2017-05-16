@@ -1,17 +1,12 @@
 package view;
 
-import org.newdawn.slick.Color;
-import org.newdawn.slick.Graphics;
-
-import game.World;
 import gui.Button;
 import gui.GuiDivision;
 import gui.GuiString;
 import main.OperationIceCream;
 
 public class FreePlayConfigureView extends View {
-  private World world = new World();
-
+  
   @Override
   void initContinue() {
     GuiDivision titleBar = new GuiDivision("title-bar");
@@ -27,18 +22,18 @@ public class FreePlayConfigureView extends View {
     });
     titleBar.addComponent(tempButton);
     scene.addComponent(titleBar);
+    
+    GuiDivision options = new GuiDivision("options");
+
+    tempButton = new Button("btn-1", "PLAY", 0, 0, 250);
+    tempButton.setClickEvent(() -> {
+      stateBasedGame.enterState(OperationIceCream.IN_GAME);
+    });
+    options.addComponent(tempButton);
+    
+    options.shift(
+        (int) ((OperationIceCream.WINDOW_SIZE_X - options.getBoundingBox().getWidth()) / 2.0), 500);
+    scene.addComponent(options);
   }
 
-  @Override
-  public void update(int delta) {
-    world.update(delta);
-
-  }
-
-  @Override
-  public void render(Graphics graphics) {
-    graphics.setBackground(Color.white);
-    scene.render(graphics);
-    world.render(graphics);
-  }
 }
