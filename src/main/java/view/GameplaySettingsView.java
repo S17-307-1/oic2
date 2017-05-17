@@ -21,6 +21,28 @@ public class GameplaySettingsView extends View {
       stateBasedGame.enterState(OperationIceCream.MAIN_MENU);
     });
     titleBar.addComponent(tempButton);
+    
+    tempButton = new Button("", "res/controlSettings.png", null, 
+        (int) (titleBar.getBoundingBox().getWidth() + 20), 0);
+    tempButton.setClickEvent(() -> {
+      stateBasedGame.enterState(OperationIceCream.CONTROL_SETTINGS);
+    });
+    titleBar.addComponent(tempButton);
+    
+    tempButton = new Button("", "res/audioSettings.png", null, 
+        (int) (titleBar.getBoundingBox().getWidth() + 20), 0);
+    tempButton.setClickEvent(() -> {
+      stateBasedGame.enterState(OperationIceCream.AUDIO_SETTINGS);
+    });
+    titleBar.addComponent(tempButton);
+    
+    tempButton = new Button("", "res/videoSettings.png", null, 
+        (int) (titleBar.getBoundingBox().getWidth() + 20), 0);
+    tempButton.setClickEvent(() -> {
+      stateBasedGame.enterState(OperationIceCream.VIDEO_SETTINGS);
+    });
+    titleBar.addComponent(tempButton);
+    
     scene.addComponent(titleBar);
     
     ButtonGroupRadio diffGroup = new ButtonGroupRadio(3);
@@ -52,5 +74,6 @@ public class GameplaySettingsView extends View {
     diffRow.shift(
         (int) ((OperationIceCream.WINDOW_SIZE_X - diffRow.getBoundingBox().getWidth()) / 2.0), 100);
     scene.addComponent(diffRow);
+    
   }
 }
