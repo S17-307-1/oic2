@@ -28,6 +28,7 @@ public class IFrame extends GuiContainer {
   private double innerHeight = 0;
 
   private Color borderColor;
+  private Color backgroundColor;
   private boolean canScrollX = true;
   private boolean canScrollY = true;
   private boolean invertY = false;
@@ -39,6 +40,7 @@ public class IFrame extends GuiContainer {
     this.width = width;
     this.height = height;
     this.borderColor = backgroundColor;
+    this.backgroundColor = backgroundColor;
   }
 
   public void setInvertY(boolean invertY) {
@@ -112,14 +114,14 @@ public class IFrame extends GuiContainer {
         try {
           canvas = new Image((int) width, (int) height);
           canvasGraphics = canvas.getGraphics();
-          canvasGraphics.setBackground(new Color(0, 0, 0, 0));
+          canvasGraphics.setBackground(backgroundColor);
         } catch (SlickException e) {
           LOGGER.log(Level.FATAL, e.toString(), e);
         }
       }
 
       canvasGraphics.clear();
-      canvasGraphics.setColor(Color.black);
+      canvasGraphics.setColor(backgroundColor);
       canvasGraphics.fillRect(0f, 0f, (float) width, (float) height);
 
       for (GuiComponent component : components) {
