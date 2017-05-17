@@ -6,11 +6,11 @@ import gui.GuiDivision;
 import gui.GuiString;
 import main.OperationIceCream;
 
-public class AudioSettingsView extends View {
+public class ControlSettingsView extends View {
   @Override
   void initContinue() {
     GuiDivision titleBar = new GuiDivision("title-bar");
-    GuiString tempString = new GuiString("title", "Audio Settings", 0, 0);
+    GuiString tempString = new GuiString("title", "Control Settings", 0, 0);
     tempString.setFont(GuiString.HEADER_FONT);
     tempString.shift(
         (int) ((OperationIceCream.WINDOW_SIZE_X - tempString.getBoundingBox().getWidth()) / 2), 10);
@@ -22,10 +22,10 @@ public class AudioSettingsView extends View {
     });
     titleBar.addComponent(tempButton);
     
-    tempButton = new Button("", "res/controlSettings.png", null, 
+    tempButton = new Button("", "res/audioSettings.png", null, 
         (int) (titleBar.getBoundingBox().getWidth() + 20), 0);
     tempButton.setClickEvent(() -> {
-      stateBasedGame.enterState(OperationIceCream.CONTROL_SETTINGS);
+      stateBasedGame.enterState(OperationIceCream.AUDIO_SETTINGS);
     });
     titleBar.addComponent(tempButton);
     
@@ -46,22 +46,22 @@ public class AudioSettingsView extends View {
     
     GuiDivision labels = new GuiDivision("");
     
-    tempString = new GuiString("", "Music Volume", 0, 0);
+    tempString = new GuiString("", "Movement", 0, 0);
     tempString.shift(0, 
         (int) ((Carousel.HEIGHT - tempString.getBoundingBox().getHeight()) / 2.0));
     labels.addComponent(tempString);
     
-    tempString = new GuiString("", "Game Volume", 0, 0);
+    tempString = new GuiString("", "Sensitivity", 0, 0);
     tempString.shift(0, 
         (int) ((Carousel.HEIGHT - tempString.getBoundingBox().getHeight()) / 2.0) + 20 + 40);
     labels.addComponent(tempString);
     
-    tempString = new GuiString("", "Ambient Noise", 0, 0);
+    tempString = new GuiString("", "Aim", 0, 0);
     tempString.shift(0, 
         (int) ((Carousel.HEIGHT - tempString.getBoundingBox().getHeight()) / 2.0) + 40 + 80);
     labels.addComponent(tempString);
     
-    tempString = new GuiString("", "Output Type", 0, 0);
+    tempString = new GuiString("", "Throw Ice Cream", 0, 0);
     tempString.shift(0, 
         (int) ((Carousel.HEIGHT - tempString.getBoundingBox().getHeight()) / 2.0) + 60 + 120);
     labels.addComponent(tempString);
@@ -71,18 +71,18 @@ public class AudioSettingsView extends View {
     
     GuiDivision carousels = new GuiDivision("");
     
-    Carousel tempCarousel = new Carousel("", 0, 100, 1, "%", 0, 0, 100);
+    Carousel tempCarousel = new Carousel("", new String[] {"WASD", "Arrow Keys"}, 0, 0, 100);
     carousels.addComponent(tempCarousel);
     
-    tempCarousel = new Carousel("", 0, 100, 1, "%", 0, 0, 100);
+    tempCarousel = new Carousel("", new String[] {"Low", "Medium", "High"}, 0, 0, 100);
     tempCarousel.shift(0, (int) (carousels.getBoundingBox().getHeight() + 20));
     carousels.addComponent(tempCarousel);
     
-    tempCarousel = new Carousel("", new String[] {"Enabled", "Disabled"}, 0, 0, 100);
+    tempCarousel = new Carousel("", new String[] {"Mouse", "Keyboard"}, 0, 0, 100);
     tempCarousel.shift(0, (int) (carousels.getBoundingBox().getHeight() + 20));
     carousels.addComponent(tempCarousel);
     
-    tempCarousel = new Carousel("", new String[] {"Stereo", "Something Else"}, 0, 0, 100);
+    tempCarousel = new Carousel("", new String[] {"Spacebar", "Mouse"}, 0, 0, 100);
     tempCarousel.shift(0, (int) (carousels.getBoundingBox().getHeight() + 20));
     carousels.addComponent(tempCarousel);
     

@@ -42,6 +42,13 @@ public class MainMenuView extends View {
     });
     options.addComponent(tempButton);
     
+    tempButton = new Button("btn-4", "EXIT", tempWidth,
+        (int) (options.getBoundingBox().getHeight() + 10), 250);
+    tempButton.setClickEvent(() -> {
+      gamecontainer.exit();
+    });
+    options.addComponent(tempButton);
+    
     options.addComponent(tempImage);
     tempImage  = new GuiImage("right-cone", "res/cone-right.png", 0, 20);
     tempImage.shift((int) (options.getBoundingBox().getWidth() + 20), 0);

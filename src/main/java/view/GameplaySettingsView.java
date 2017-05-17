@@ -78,24 +78,34 @@ public class GameplaySettingsView extends View {
     
     GuiDivision labels = new GuiDivision("");
     
-    tempString = new GuiString("", "Music Volume", 0, 0);
+    tempString = new GuiString("", "Base Player Health", 0, 0);
     tempString.shift(0, 
         (int) ((Carousel.HEIGHT - tempString.getBoundingBox().getHeight()) / 2.0));
     labels.addComponent(tempString);
     
-    tempString = new GuiString("", "Game Volume", 0, 0);
+    tempString = new GuiString("", "Base Enemy Health", 0, 0);
     tempString.shift(0, 
         (int) ((Carousel.HEIGHT - tempString.getBoundingBox().getHeight()) / 2.0) + 20 + 40);
     labels.addComponent(tempString);
     
-    tempString = new GuiString("", "Ambient Noise", 0, 0);
+    tempString = new GuiString("", "Base Player Speed", 0, 0);
     tempString.shift(0, 
         (int) ((Carousel.HEIGHT - tempString.getBoundingBox().getHeight()) / 2.0) + 40 + 80);
     labels.addComponent(tempString);
     
-    tempString = new GuiString("", "Output Type", 0, 0);
+    tempString = new GuiString("", "Base Enemy Speed", 0, 0);
     tempString.shift(0, 
         (int) ((Carousel.HEIGHT - tempString.getBoundingBox().getHeight()) / 2.0) + 60 + 120);
+    labels.addComponent(tempString);
+    
+    tempString = new GuiString("", "Base Enemies Per Wave", 0, 0);
+    tempString.shift(0, 
+        (int) ((Carousel.HEIGHT - tempString.getBoundingBox().getHeight()) / 2.0) + 80 + 160);
+    labels.addComponent(tempString);
+    
+    tempString = new GuiString("", "Ice Cream Effectiveness", 0, 0);
+    tempString.shift(0, 
+        (int) ((Carousel.HEIGHT - tempString.getBoundingBox().getHeight()) / 2.0) + 100 + 200);
     labels.addComponent(tempString);
     
     GuiDivision options = new GuiDivision("");
@@ -103,18 +113,26 @@ public class GameplaySettingsView extends View {
     
     GuiDivision carousels = new GuiDivision("");
     
-    Carousel tempCarousel = new Carousel("", 0, 100, 1, "%", 0, 0, 100);
+    Carousel tempCarousel = new Carousel("", 1, 20, 1, " Lives", 0, 0, 100);
     carousels.addComponent(tempCarousel);
     
-    tempCarousel = new Carousel("", 0, 100, 1, "%", 0, 0, 100);
+    tempCarousel = new Carousel("", 1, 20, 1, " Lives", 0, 0, 100);
     tempCarousel.shift(0, (int) (carousels.getBoundingBox().getHeight() + 20));
     carousels.addComponent(tempCarousel);
     
-    tempCarousel = new Carousel("", new String[] {"Enabled", "Disabled"}, 0, 0, 100);
+    tempCarousel = new Carousel("", 1, 20, 1, " m/s", 0, 0, 100);
     tempCarousel.shift(0, (int) (carousels.getBoundingBox().getHeight() + 20));
     carousels.addComponent(tempCarousel);
     
-    tempCarousel = new Carousel("", new String[] {"Stereo", "Something Else"}, 0, 0, 100);
+    tempCarousel = new Carousel("", 1, 20, 1, " m/s", 0, 0, 100);
+    tempCarousel.shift(0, (int) (carousels.getBoundingBox().getHeight() + 20));
+    carousels.addComponent(tempCarousel);
+    
+    tempCarousel = new Carousel("", 1, 20, 1, "", 0, 0, 100);
+    tempCarousel.shift(0, (int) (carousels.getBoundingBox().getHeight() + 20));
+    carousels.addComponent(tempCarousel);
+    
+    tempCarousel = new Carousel("", 50, 200, 25, "%", 0, 0, 100);
     tempCarousel.shift(0, (int) (carousels.getBoundingBox().getHeight() + 20));
     carousels.addComponent(tempCarousel);
     
