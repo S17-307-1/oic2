@@ -22,28 +22,28 @@ public class MainMenuView extends View {
     GuiImage tempImage  = new GuiImage("left-cone", "res/cone-left.png", 0, 20);
 
     int tempWidth = (int) (tempImage.getBoundingBox().getWidth() + 20);
-    Button tempButton = new Button("btn-1", "PLAY", tempWidth, 0, 250);
+    Button tempButton = new Button("btn-1", "PLAY", tempWidth, 0, 250, false);
     tempButton.setClickEvent(() -> {
       stateBasedGame.enterState(OperationIceCream.GAME_MODE_SELECT);
     });
     options.addComponent(tempButton);
 
     tempButton = new Button("btn-2", "SETTINGS", tempWidth, 
-            (int) (options.getBoundingBox().getHeight() + 10), 250);
+            (int) (options.getBoundingBox().getHeight() + 10), 250, false);
     tempButton.setClickEvent(() -> {
       stateBasedGame.enterState(OperationIceCream.GAMEPLAY_SETTINGS);
     });
     options.addComponent(tempButton);
 
     tempButton = new Button("btn-3", "LEADERBOARDS", tempWidth,
-        (int) (options.getBoundingBox().getHeight() + 10), 250);
+        (int) (options.getBoundingBox().getHeight() + 10), 250, false);
     tempButton.setClickEvent(() -> {
       stateBasedGame.enterState(OperationIceCream.LEADERBOARDS);
     });
     options.addComponent(tempButton);
     
     tempButton = new Button("btn-4", "EXIT", tempWidth,
-        (int) (options.getBoundingBox().getHeight() + 10), 250);
+        (int) (options.getBoundingBox().getHeight() + 10), 250, false);
     tempButton.setClickEvent(() -> {
       gamecontainer.exit();
     });

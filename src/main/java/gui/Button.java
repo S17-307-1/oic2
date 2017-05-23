@@ -59,7 +59,8 @@ public class Button extends GuiElement {
     origin = new Point2D.Double(clickableArea.getX(), clickableArea.getY());
   }
 
-  public Button(String id, String label, int coordX, int coordY, int minWidth) {
+  public Button(String id, String label, int coordX, int coordY, int minWidth, 
+      boolean changeActive) {
     super(id);
     int labelWidth = Math.max(GuiString.BUTTON_FONT.getWidth(label), minWidth);
     int labelHeight = GuiString.BUTTON_FONT.getHeight();
@@ -73,7 +74,20 @@ public class Button extends GuiElement {
       RoundedRectangle rect = new RoundedRectangle(2, 2, labelWidth + 16, labelHeight + 16, 10f);
       graphics.draw(rect);
       graphics.flush();
+      
       activeImage = defaultImage;
+      if (changeActive) {
+        activeImage = new Image(labelWidth + 20, labelHeight + 20);
+        graphics = activeImage.getGraphics();
+        graphics.setColor(Color.black);
+        graphics.setFont(GuiString.BUTTON_FONT);
+        graphics.drawString(label, 
+            (labelWidth - GuiString.BUTTON_FONT.getWidth(label) + 20) / 2, 8);
+        graphics.setLineWidth(8f);
+        rect = new RoundedRectangle(4, 4, labelWidth + 12, labelHeight + 12, 10f);
+        graphics.draw(rect);
+        graphics.flush();
+      }
     } catch (SlickException e) {
       LOGGER.log(Level.FATAL, e.toString(), e);
     }

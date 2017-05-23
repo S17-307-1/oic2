@@ -1,6 +1,7 @@
 package view;
 
 import gui.Button;
+import gui.ButtonGroupRadio;
 import gui.GuiDivision;
 import gui.GuiString;
 import main.OperationIceCream;
@@ -23,16 +24,144 @@ public class FreePlayConfigureView extends View {
     titleBar.addComponent(tempButton);
     scene.addComponent(titleBar);
     
-    GuiDivision options = new GuiDivision("options");
-
-    tempButton = new Button("btn-1", "PLAY", 0, 0, 250);
+    /////////////////////////////////////////////////////////////////////////////////////////
+    GuiDivision diffRow = new GuiDivision("");
+    tempString = new GuiString("", "Difficulty", 0, 0);
+    diffRow.addComponent(tempString);
+    
+    ButtonGroupRadio diffGroup = new ButtonGroupRadio(3);
+    tempButton = new Button("", "res/easy.png", "res/easy_selected.png", 
+        0, (int) (diffRow.getBoundingBox().getHeight() + 10));
+    tempButton.addToRadioGroup(diffGroup);
+    tempButton.activate();
+    tempButton.setClickEvent(() -> {
+      
+    });
+    diffRow.addComponent(tempButton);
+    
+    tempButton = new Button("", "res/medium.png", "res/medium_selected.png", 
+        0, (int) (diffRow.getBoundingBox().getHeight() + 10));
+    tempButton.addToRadioGroup(diffGroup);
+    tempButton.setClickEvent(() -> {
+      
+    });
+    diffRow.addComponent(tempButton);
+    
+    tempButton = new Button("", "res/hard.png", "res/hard_selected.png", 
+        0, (int) (diffRow.getBoundingBox().getHeight() + 10));
+    tempButton.addToRadioGroup(diffGroup);
+    tempButton.setClickEvent(() -> {
+      
+    });
+    diffRow.addComponent(tempButton);
+    
+    GuiDivision options = new GuiDivision("");
+    options.addComponent(diffRow);
+    /////////////////////////////////////////////////////////////////////////////////////////
+    
+    diffRow = new GuiDivision("");
+    tempString = new GuiString("", "Map", 0, 0);
+    diffRow.addComponent(tempString);
+    
+    diffGroup = new ButtonGroupRadio(3);
+    tempButton = new Button("", "res/easy.png", "res/easy_selected.png", 
+        0, (int) (diffRow.getBoundingBox().getHeight() + 10));
+    tempButton.addToRadioGroup(diffGroup);
+    tempButton.activate();
+    tempButton.setClickEvent(() -> {
+      
+    });
+    diffRow.addComponent(tempButton);
+    
+    tempButton = new Button("", "res/medium.png", "res/medium_selected.png", 
+        0, (int) (diffRow.getBoundingBox().getHeight() + 10));
+    tempButton.addToRadioGroup(diffGroup);
+    tempButton.setClickEvent(() -> {
+      
+    });
+    diffRow.addComponent(tempButton);
+    
+    tempButton = new Button("", "res/hard.png", "res/hard_selected.png", 
+        0, (int) (diffRow.getBoundingBox().getHeight() + 10));
+    tempButton.addToRadioGroup(diffGroup);
+    tempButton.setClickEvent(() -> {
+      
+    });
+    diffRow.addComponent(tempButton);
+    
+    diffRow.shift((int) (options.getBoundingBox().getWidth() + 20), 0);
+    options.addComponent(diffRow);
+    /////////////////////////////////////////////////////////////////////////////////////////
+    
+    diffRow = new GuiDivision("");
+    tempString = new GuiString("", "Mode", 0, 0);
+    diffRow.addComponent(tempString);
+    
+    diffGroup = new ButtonGroupRadio(2);
+    tempButton = new Button("", "res/easy.png", "res/easy_selected.png", 
+        0, (int) (diffRow.getBoundingBox().getHeight() + 10));
+    tempButton.addToRadioGroup(diffGroup);
+    tempButton.activate();
+    tempButton.setClickEvent(() -> {
+      
+    });
+    diffRow.addComponent(tempButton);
+    
+    tempButton = new Button("", "res/medium.png", "res/medium_selected.png", 
+        0, (int) (diffRow.getBoundingBox().getHeight() + 10));
+    tempButton.addToRadioGroup(diffGroup);
+    tempButton.setClickEvent(() -> {
+      
+    });
+    diffRow.addComponent(tempButton);
+    
+    diffRow.shift((int) (options.getBoundingBox().getWidth() + 20), 0);
+    options.addComponent(diffRow);
+    /////////////////////////////////////////////////////////////////////////////////////////
+    
+    diffRow = new GuiDivision("");
+    tempString = new GuiString("", "Character", 0, 0);
+    diffRow.addComponent(tempString);
+    
+    tempButton = new Button("", "CUSTOMIZE", 0, 
+        (int) (diffRow.getBoundingBox().getHeight() + 10), 200, false);
+    tempButton.setClickEvent(() -> {
+      
+    });
+    diffRow.addComponent(tempButton);
+    
+    diffGroup = new ButtonGroupRadio(2);
+    tempButton = new Button("", "JOE BRO JOE", 0, 
+        (int) (diffRow.getBoundingBox().getHeight() + 10), 200, true);
+    tempButton.addToRadioGroup(diffGroup);
+    tempButton.setClickEvent(() -> {
+      
+    });
+    diffRow.addComponent(tempButton);
+    
+    tempButton = new Button("", "JASMINE", 0, 
+        (int) (diffRow.getBoundingBox().getHeight() + 10), 200, true);
+    tempButton.addToRadioGroup(diffGroup);
+    tempButton.setClickEvent(() -> {
+      
+    });
+    diffRow.addComponent(tempButton);
+    
+    diffRow.shift((int) (options.getBoundingBox().getWidth() + 20), 0);
+    options.addComponent(diffRow);
+    /////////////////////////////////////////////////////////////////////////////////////////
+    
+    tempButton = new Button("btn-1", "PLAY", 0, 500, 250, false);
     tempButton.setClickEvent(() -> {
       stateBasedGame.enterState(OperationIceCream.IN_GAME);
     });
+    tempButton.shift(
+        (int) ((options.getBoundingBox().getWidth() 
+            - tempButton.getBoundingBox().getWidth()) / 2.0), 0);
     options.addComponent(tempButton);
     
     options.shift(
-        (int) ((OperationIceCream.WINDOW_SIZE_X - options.getBoundingBox().getWidth()) / 2.0), 500);
+        (int) ((OperationIceCream.WINDOW_SIZE_X - options.getBoundingBox().getWidth()) / 2.0), 300);
     scene.addComponent(options);
   }
 

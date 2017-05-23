@@ -61,11 +61,11 @@ public class CampaignConfigureView extends View {
         options.getBoundingBox().getWidth() + 10, 0));
     
     tempButton = new Button("", "CUSTOMIZE CHARACTER", 
-        (int) (options.getBoundingBox().getWidth() + 10), 0, 10);
+        (int) (options.getBoundingBox().getWidth() + 10), 0, 10, false);
     options.addComponent(tempButton);
     
     tempButton = new Button("", "PLAY", 
-        0, (int) (options.getBoundingBox().getHeight() + 10), 10);
+        0, (int) (options.getBoundingBox().getHeight() + 10), 10, false);
     options.addComponent(tempButton);
     
     options.shift(

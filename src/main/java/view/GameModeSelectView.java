@@ -25,7 +25,7 @@ public class GameModeSelectView extends View {
 
     GuiImage tempImage = new GuiImage("single-player", "res/single-player.png", 0, 0);
     tempButton = new Button("btn-1", "CAMPAIGN", 
-        (int) (tempImage.getBoundingBox().getWidth() + 10), 0, 250);
+        (int) (tempImage.getBoundingBox().getWidth() + 10), 0, 250, false);
     tempButton.shift(0, (int) ((tempImage.getBoundingBox().getHeight() 
         - tempButton.getBoundingBox().getHeight()) / 2.0));
     tempButton.setClickEvent(() -> {
@@ -40,7 +40,7 @@ public class GameModeSelectView extends View {
 
     tempImage = new GuiImage("single-player", "res/single-player.png", 0, 0);
     tempButton = new Button("btn-2", "FREEPLAY", 
-        (int) (tempImage.getBoundingBox().getWidth() + 10), 0, 250);
+        (int) (tempImage.getBoundingBox().getWidth() + 10), 0, 250, false);
     tempButton.shift(0, (int) ((tempImage.getBoundingBox().getHeight() 
         - tempButton.getBoundingBox().getHeight()) / 2.0));
     tempButton.setClickEvent(() -> {
@@ -54,7 +54,7 @@ public class GameModeSelectView extends View {
 
     tempImage = new GuiImage("multi-player", "res/multi-player.png", 0, 0);
     tempButton = new Button("btn-2", "MULTIPLAYER", 
-        (int) (tempImage.getBoundingBox().getWidth() + 10), 0, 250);
+        (int) (tempImage.getBoundingBox().getWidth() + 10), 0, 250, false);
     tempButton.shift(0, (int) ((tempImage.getBoundingBox().getHeight() 
         - tempButton.getBoundingBox().getHeight()) / 2.0));
     tempButton.setClickEvent(() -> {
@@ -68,7 +68,7 @@ public class GameModeSelectView extends View {
 
     tempImage = new GuiImage("tutorial", "res/tutorial.png", 0, 0);
     tempButton = new Button("btn-2", "TUTORIAL", 
-        (int) (tempImage.getBoundingBox().getWidth() + 10), 0, 250);
+        (int) (tempImage.getBoundingBox().getWidth() + 10), 0, 250, false);
     tempButton.shift(0, (int) ((tempImage.getBoundingBox().getHeight() 
         - tempButton.getBoundingBox().getHeight()) / 2.0));
     tempButton.setClickEvent(() -> {
