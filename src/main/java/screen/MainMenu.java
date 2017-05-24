@@ -35,8 +35,6 @@ public class MainMenu extends BasicGameState {
 
   @Override
   public int getID() {
-    // TODO Auto-generated method stub
     return OperationIceCream.MAIN_MENU;
   }
-
 }
