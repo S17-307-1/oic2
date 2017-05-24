@@ -6,7 +6,6 @@ import org.newdawn.slick.geom.Vector2f;
 import org.newdawn.slick.util.FastTrig;
 
 import game.AssetLoader.AssetName;
-import main.OperationIceCream;
 
 public class Enemy extends Entity {
   public Enemy(Vector2f startPos) {
@@ -42,7 +41,6 @@ public class Enemy extends Entity {
     for (Icecream ic : world.getIcecreams()) {
       if (this.intersects(ic)) {
         ic.setShouldBeRemoved(true);
-        System.out.println("KDJF");
         return true;
       }
     }

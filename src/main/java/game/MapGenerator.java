@@ -1,6 +1,6 @@
 package game;
 
-import java.util.Iterator;
+import java.util.ListIterator;
 
 import org.newdawn.slick.geom.Vector2f;
 
@@ -16,7 +16,8 @@ public class MapGenerator {
     this.world = map;
     BackgroundTile firstTile = new BackgroundTile();
     firstTile.setPosition(new Vector2f(0, 0));
-    map.addTile(firstTile);
+    ListIterator<BackgroundTile> iter = world.getBackgroundTiles().listIterator();
+    map.addTile(firstTile, iter);
   }
 
   public void generate() {
@@ -24,25 +25,25 @@ public class MapGenerator {
   }
 
   private void generateBackgroundTiles() {
-    for (int i = 0; i < world.getNumTiles(); i++) {
-      BackgroundTile currBackgroundTile = world.getTile(i);
-
+    for (ListIterator<BackgroundTile> iter = world.getBackgroundTiles().listIterator(); iter.hasNext();) {
+      BackgroundTile currBackgroundTile = iter.next();
+      
       if (!currBackgroundTile.update(world.getCamera())) {
-        world.removeTile(currBackgroundTile, i--);
+        world.removeTile(currBackgroundTile, iter);
       }
 
       if (world.getPlayer().getCenter()
           .distance(currBackgroundTile.getCenter()) <= GENERATOR_RADIUS) {
-        attemptToGenerateTile(currBackgroundTile, TileDirection.LEFT);
-        attemptToGenerateTile(currBackgroundTile, TileDirection.UP);
-        attemptToGenerateTile(currBackgroundTile, TileDirection.DOWN);
-        attemptToGenerateTile(currBackgroundTile, TileDirection.RIGHT);
-        attemptToGenerateTile(currBackgroundTile, TileDirection.TOP_LEFT);
+        attemptToGenerateTile(currBackgroundTile, TileDirection.LEFT, iter);
+        attemptToGenerateTile(currBackgroundTile, TileDirection.UP, iter);
+        attemptToGenerateTile(currBackgroundTile, TileDirection.DOWN, iter);
+        attemptToGenerateTile(currBackgroundTile, TileDirection.RIGHT, iter);
+        attemptToGenerateTile(currBackgroundTile, TileDirection.TOP_LEFT, iter);
       }
     }
   }
 
-  private void attemptToGenerateTile(BackgroundTile currBackgroundTile, TileDirection dir) {
+  private void attemptToGenerateTile(BackgroundTile currBackgroundTile, TileDirection dir, ListIterator<BackgroundTile> iter) {
     BackgroundTile newBackgroundTile = new BackgroundTile();
     Vector2f newTilePos = null;
 
@@ -76,7 +77,7 @@ public class MapGenerator {
     newBackgroundTile.setPosition(newTilePos);
 
     if (world.isTileSpotFree(newBackgroundTile)) {
-      world.addTile(newBackgroundTile);
+      world.addTile(newBackgroundTile, iter);
     }
   }
 

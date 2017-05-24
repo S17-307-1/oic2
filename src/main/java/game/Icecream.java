@@ -23,7 +23,7 @@ public class Icecream extends Entity {
   }
   
   public void init() {
-    
+    // Icecream has no image assets to init
   }
 
   public Vector2f getCenter() {
@@ -36,7 +36,7 @@ public class Icecream extends Entity {
     getPosition().add(getVelocity());
     getBoundingBox().setLocation(getPosition());
 
-    return getShouldBeRemoved() || false;
+    return getShouldBeRemoved();
   }
 
   @Override

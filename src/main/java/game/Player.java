@@ -28,18 +28,18 @@ public class Player extends Entity {
   @Override
   public boolean update(int delta, World world) {
     if (input.isKeyDown(Input.KEY_A)) {
-      float xVel = (float) (getVelocity().getX() - getAcceleration().getX() * delta / 1000f);
+      float xVel = getVelocity().getX() - getAcceleration().getX() * delta / 1000f;
       getVelocity().x = Util.constrain(xVel, -getMaxVelocity().getX(), getMaxVelocity().getX());
     }
     if (input.isKeyDown(Input.KEY_D)) {
-      float xVel = (float) (getVelocity().getX() + getAcceleration().getX() * delta / 1000f);
+      float xVel = getVelocity().getX() + getAcceleration().getX() * delta / 1000f;
       getVelocity().x = Util.constrain(xVel, -getMaxVelocity().getX(), getMaxVelocity().getX());
     }
     if (input.isKeyDown(Input.KEY_W)) {
-      float yVel = (float) (getVelocity().getY() - getAcceleration().getY() * delta / 1000f);
+      float yVel = getVelocity().getY() - getAcceleration().getY() * delta / 1000f;
       getVelocity().y = Util.constrain(yVel, -getMaxVelocity().getY(), getMaxVelocity().getY());
     } else if (input.isKeyDown(Input.KEY_S)) {
-      float yVel = (float) (getVelocity().getY() + getAcceleration().getY() * delta / 1000f);
+      float yVel = getVelocity().getY() + getAcceleration().getY() * delta / 1000f;
       getVelocity().y = Util.constrain(yVel, -getMaxVelocity().getY(), getMaxVelocity().getY());
     }
 
@@ -59,7 +59,7 @@ public class Player extends Entity {
       throwIcecream(world);
     }
 
-    return getShouldBeRemoved() || false;
+    return getShouldBeRemoved();
   }
 
   @Override

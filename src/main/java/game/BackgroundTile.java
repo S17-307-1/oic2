@@ -1,5 +1,7 @@
 package game;
 
+import java.util.Random;
+
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.geom.Vector2f;
@@ -13,17 +15,19 @@ public class BackgroundTile {
   public static final int TILE_SIZE = 64;
 
   public BackgroundTile() {
-    int rand = (int) (Math.random() * 6);
+    Random rand = new Random();
+
+    int num = rand.nextInt(6);
     Image img;
-    if (rand == 0) {
+    if (num == 0) {
       img = AssetLoader.getAsset(AssetName.TILE_1);
-    } else if (rand == 1) {
+    } else if (num == 1) {
       img = AssetLoader.getAsset(AssetName.TILE_2);
-    } else if (rand == 2) {
+    } else if (num == 2) {
       img = AssetLoader.getAsset(AssetName.TILE_3);
-    } else if (rand == 3) {
+    } else if (num == 3) {
       img = AssetLoader.getAsset(AssetName.TILE_4);
-    } else if (rand == 4) {
+    } else if (num == 4) {
       img = AssetLoader.getAsset(AssetName.TILE_5);
     } else {
       img = AssetLoader.getAsset(AssetName.TILE_6);

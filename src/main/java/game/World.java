@@ -4,20 +4,19 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
 import java.util.Random;
 
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.geom.Vector2f;
 
-import main.OperationIceCream;
-
 public class World {
   private Player player;
   private Camera camera = new Camera();
-  private ArrayList<Entity> entities = new ArrayList<Entity>();
-  private ArrayList<Icecream> icecreams = new ArrayList<Icecream>();
-  private List<BackgroundTile> backgroundTiles = new ArrayList<BackgroundTile>();
-  private HashSet<Vector2f> tilesPositionSet = new HashSet<Vector2f>();
+  private ArrayList<Entity> entities = new ArrayList<>();
+  private ArrayList<Icecream> icecreams = new ArrayList<>();
+  private List<BackgroundTile> backgroundTiles = new ArrayList<>();
+  private HashSet<Vector2f> tilesPositionSet = new HashSet<>();
   private MapGenerator mapGenerator = new MapGenerator(this);
   private long lastEnemySpawnTime = 0;
 
@@ -85,8 +84,8 @@ public class World {
     return false;
   }
 
-  public void removeTile(BackgroundTile backgroundTile, int ndx) {
-    backgroundTiles.remove(ndx);
+  public void removeTile(BackgroundTile backgroundTile, ListIterator<BackgroundTile> iter) {
+    iter.remove();
 
     int width = backgroundTile.getWidth() / BackgroundTile.TILE_SIZE;
     int height = backgroundTile.getHeight() / BackgroundTile.TILE_SIZE;
@@ -104,8 +103,8 @@ public class World {
     }
   }
 
-  public void addTile(BackgroundTile backgroundTile) {
-    backgroundTiles.add(backgroundTile);
+  public void addTile(BackgroundTile backgroundTile, ListIterator<BackgroundTile> iter) {
+    iter.add(backgroundTile);
 
     int width = backgroundTile.getWidth() / BackgroundTile.TILE_SIZE;
     int height = backgroundTile.getHeight() / BackgroundTile.TILE_SIZE;
