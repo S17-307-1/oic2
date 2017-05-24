@@ -9,40 +9,54 @@ import game.AssetLoader.AssetName;
 import main.OperationIceCream;
 
 public class Enemy extends Entity {
-  private float rotation = 0f;
-  private static final int SPRITE_WIDTH = 64;
-  private static final int SPRITE_HEIGHT = 64;
-
   public Enemy(Vector2f startPos) {
-    setSprite(AssetLoader.getAsset(AssetName.ENEMY));
     setPosition(new Vector2f(startPos));
     setVelocity(new Vector2f(0, 0));
     setMaxVelocity(new Vector2f(1f, 1f));
+  }
 
-    setBoundingBox(new Circle(getCenter().getX(), getCenter().getY(), SPRITE_WIDTH / 2));
+  public Enemy() {
+    this(new Vector2f(0, 0));
+  }
+
+  @Override
+  public void init() {
+    setSprite(AssetLoader.getAsset(AssetName.ENEMY));
+    setBoundingBox(new Circle(getCenter().getX(), getCenter().getY(), getSprite().getWidth() / 2));
   }
 
   @Override
   public boolean update(int delta, World world) {
     Vector2f playerCenter = world.getPlayer().getCenter();
     Vector2f posDiff = playerCenter.sub(getCenter());
-    rotation = (float) Math.atan2(posDiff.getY(), posDiff.getX());
+    setRotation((float) Math.atan2(posDiff.getY(), posDiff.getX()));
 
-    float xVel = (float) (getVelocity().getX() + 50f * FastTrig.cos(rotation) * delta / 1000f);
-    float yVel = (float) (getVelocity().getY() + 50f * FastTrig.sin(rotation) * delta / 1000f);
+    float xVel = (float) (getVelocity().getX() + 50f * FastTrig.cos(getRotation()) * delta / 1000f);
+    float yVel = (float) (getVelocity().getY() + 50f * FastTrig.sin(getRotation()) * delta / 1000f);
     getVelocity().x = Util.constrain(xVel, -getMaxVelocity().getX(), getMaxVelocity().getX());
     getVelocity().y = Util.constrain(yVel, -getMaxVelocity().getY(), getMaxVelocity().getY());
 
-    getBoundingBox().setCenterX(getCenter().x);
-    getBoundingBox().setCenterY(getCenter().y);
     getPosition().add(getVelocity());
+    getBoundingBox().setLocation(getPosition());
+    
+    for (Icecream ic : world.getIcecreams()) {
+      if (this.intersects(ic)) {
+        ic.setShouldBeRemoved(true);
+        System.out.println("KDJF");
+        return true;
+      }
+    }
+    if (this.intersects(world.getPlayer())) {
+     world.getPlayer().setShouldBeRemoved(true);
+    }
+    
     return false;
   }
 
   @Override
   public void render(Graphics g) {
     g.pushTransform();
-    g.rotate(getCenter().getX(), getCenter().getY(), (float) (Math.toDegrees(rotation) + 90f));
+    g.rotate(getCenter().getX(), getCenter().getY(), (float) (Math.toDegrees(getRotation()) + 90f));
     g.drawImage(getSprite(), getPosition().getX(), getPosition().getY());
     g.popTransform();
   }
@@ -51,4 +65,5 @@ public class Enemy extends Entity {
   public Vector2f getCenter() {
     return new Vector2f(getPosition().getX() + 33, getPosition().getY() + 44);
   }
+
 }

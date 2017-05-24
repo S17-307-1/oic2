@@ -9,43 +9,62 @@ import java.util.Random;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.geom.Vector2f;
 
+import main.OperationIceCream;
+
 public class World {
-  private Player player = new Player();
+  private Player player;
   private Camera camera = new Camera();
   private ArrayList<Entity> entities = new ArrayList<Entity>();
+  private ArrayList<Icecream> icecreams = new ArrayList<Icecream>();
   private List<BackgroundTile> backgroundTiles = new ArrayList<BackgroundTile>();
   private HashSet<Vector2f> tilesPositionSet = new HashSet<Vector2f>();
   private MapGenerator mapGenerator = new MapGenerator(this);
   private long lastEnemySpawnTime = 0;
 
   public World() {
-    entities.add(new Enemy(new Vector2f(0, 0)));
+    player = new Player();
+    player.init();
+
   }
 
   public void render(Graphics g) {
-    g.translate(-camera.getPosition().getX(), -camera.getPosition().getY());
+    g.translate(-camera.getPosition().getX(), -camera.getPosition().getY()); 
     for (BackgroundTile bt : backgroundTiles) {
       bt.render(g);
     }
     for (Entity e : entities) {
       e.render(g);
     }
-    player.render(g);
+    
+    for (Icecream ice : icecreams) {
+      ice.render(g);
+    }
+    if (player != null) {
+      player.render(g);
+    }
   }
 
-  public void update(int delta) {
-    player.update(delta, this);
+  public boolean update(int delta) {
+    boolean playerDead = player.update(delta, this);
+    if (playerDead) {
+      return true;
+    }
     camera.update(player);
     mapGenerator.generate();
 
     if (System.currentTimeMillis() - lastEnemySpawnTime > 1000f) {
       lastEnemySpawnTime = System.currentTimeMillis();
       Random rand = new Random();
-      Vector2f posOffset = new Vector2f(rand.nextInt(1000) - 500, rand.nextInt(1000) - 500);
-      entities.add(new Enemy(new Vector2f(player.getPosition().getX() + posOffset.getX(),
-          player.getPosition().getY() + posOffset.getY())));
-    }
 
+      Vector2f posOffset = new Vector2f(rand.nextInt(1000) - 500, rand.nextInt(1000) - 500);
+
+      Enemy e = new Enemy(new Vector2f(0, 0));
+      e.setPosition(new Vector2f(player.getPosition().getX() + posOffset.getX(),
+          player.getPosition().getY() + posOffset.getY()));
+      e.init();
+      entities.add(e);
+    }
+    
     for (Iterator<Entity> iter = entities.iterator(); iter.hasNext();) {
       Entity e = iter.next();
 
@@ -54,6 +73,16 @@ public class World {
         iter.remove();
       }
     }
+    
+    for (Iterator<Icecream> iter = icecreams.iterator(); iter.hasNext();) {
+      Icecream ice = iter.next();
+
+      boolean shouldRemove = ice.update(delta, this);
+      if (shouldRemove) {
+        iter.remove();
+      }
+    }
+    return false;
   }
 
   public void removeTile(BackgroundTile backgroundTile, int ndx) {
@@ -113,9 +142,17 @@ public class World {
     }
     return true;
   }
+  
+  public void addIcecream(Icecream icecream) {
+    icecreams.add(icecream);
+  }
 
   public void addEntity(Entity e) {
     entities.add(e);
+  }
+  
+  public List<Icecream> getIcecreams() {
+    return icecreams;
   }
 
   public Camera getCamera() {

@@ -9,20 +9,19 @@ import game.AssetLoader.AssetName;
 import main.OperationIceCream;
 
 public class Player extends Entity {
-  private static final int SPRITE_WIDTH = 64;
-  private static final int SPRITE_HEIGHT = 64;
-  private float rotation = 0f;
   private Vector2f acceleration = new Vector2f(15f, 15f);
   private Input input = new Input(OperationIceCream.WINDOW_SIZE_Y);
   private long lastTimeFired = -1;
 
   public Player() {
-    setSprite(AssetLoader.getAsset(AssetName.PLAYER));
-    setPosition(new Vector2f(OperationIceCream.WINDOW_SIZE_X / 2 - SPRITE_WIDTH / 2,
-        OperationIceCream.WINDOW_SIZE_Y / 2 - SPRITE_HEIGHT / 2));
+    setPosition(new Vector2f(0, 0));
     setVelocity(new Vector2f(0, 0));
     setMaxVelocity(new Vector2f(5f, 5f));
-
+  }
+  
+  @Override
+  public void init() {
+    setSprite(AssetLoader.getAsset(AssetName.PLAYER));
     setBoundingBox(new Circle(getCenter().getX(), getCenter().getY(), getSprite().getWidth() / 2));
   }
 
@@ -48,13 +47,11 @@ public class Player extends Entity {
     getVelocity().y *= Math.pow(.01f, delta / 1000f);
 
     getPosition().add(getVelocity());
-
-    getBoundingBox().setCenterX(getCenter().x);
-    getBoundingBox().setCenterY(getCenter().y);
+    getBoundingBox().setLocation(getPosition());
 
     float distX = (world.getCamera().getPosition().getX() + input.getMouseX()) - getCenter().getX();
     float distY = (world.getCamera().getPosition().getY() + input.getMouseY()) - getCenter().getY();
-    rotation = (float) Math.toDegrees(Math.atan2(distY, distX));
+    setRotation((float) Math.toDegrees(Math.atan2(distY, distX)));
 
     if (input.isMouseButtonDown(Input.MOUSE_LEFT_BUTTON)
         && System.currentTimeMillis() - lastTimeFired > 500) {
@@ -62,15 +59,14 @@ public class Player extends Entity {
       throwIcecream(world);
     }
 
-    return false;
+    return getShouldBeRemoved() || false;
   }
 
   @Override
   public void render(Graphics g) {
     g.pushTransform();
-    g.rotate(getCenter().getX(), getCenter().getY(), rotation + 90f);
+    g.rotate(getCenter().getX(), getCenter().getY(), getRotation() + 90f);
     g.drawImage(getSprite(), getPosition().getX(), getPosition().getY());
-    g.fillOval(getCenter().getX() - 8, getCenter().getY() - 8, 16, 16);
     g.popTransform();
   }
 
@@ -80,16 +76,8 @@ public class Player extends Entity {
   }
 
   public void throwIcecream(World world) {
-    Entity e = new Icecream(getCenter(), Math.toRadians(rotation));
-    world.addEntity(e);
-  }
-
-  public float getRotation() {
-    return rotation;
-  }
-
-  public void setRotation(float rotation) {
-    this.rotation = rotation;
+    Icecream e = new Icecream(getCenter(), Math.toRadians(getRotation()));
+    world.addIcecream(e);
   }
 
   public Vector2f getAcceleration() {

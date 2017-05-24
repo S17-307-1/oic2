@@ -12,17 +12,21 @@ public abstract class Entity {
   private Vector2f maxVelocity;
   private Shape boundingBox;
   private Image sprite;
+  private float rotation;
+  private boolean shouldBeRemoved = false;
 
   public Entity() {
 
   }
+  
+  public abstract void init();
 
   public abstract boolean update(int delta, World world);
 
   public abstract void render(Graphics g);
 
   public boolean intersects(Entity entity) {
-    return this.getBoundingBox() == null
+    return this.getBoundingBox() != null
         && this.getBoundingBox().intersects(entity.getBoundingBox());
   }
 
@@ -76,4 +80,19 @@ public abstract class Entity {
     this.maxVelocity = maxVelocity;
   }
 
+  public float getRotation() {
+    return rotation;
+  }
+
+  public void setRotation(float rotation) {
+    this.rotation = rotation;
+  }
+
+  public boolean getShouldBeRemoved() {
+    return shouldBeRemoved;
+  }
+
+  public void setShouldBeRemoved(boolean shouldBeRemoved) {
+    this.shouldBeRemoved = shouldBeRemoved;
+  }
 }

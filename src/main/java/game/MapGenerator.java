@@ -15,8 +15,7 @@ public class MapGenerator {
   public MapGenerator(World map) {
     this.world = map;
     BackgroundTile firstTile = new BackgroundTile();
-    firstTile.setPosition(new Vector2f(512, 512));
-    System.out.println(firstTile.getPosition());
+    firstTile.setPosition(new Vector2f(0, 0));
     map.addTile(firstTile);
   }
 

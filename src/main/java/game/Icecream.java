@@ -15,12 +15,15 @@ public class Icecream extends Entity {
     float startY = (float) (startPos.getY() + FastTrig.sin(rotation + Math.PI / 2) * 10);
     setPosition(new Vector2f(new Vector2f(startX, startY)));
 
-    float velX = (float) FastTrig.cos(rotation) * 30f;
-    float velY = (float) FastTrig.sin(rotation) * 30f;
+    float velX = (float) FastTrig.cos(rotation) * 30;
+    float velY = (float) FastTrig.sin(rotation) * 30;
     setVelocity(new Vector2f(velX, velY));
 
     setBoundingBox(new Circle(getCenter().getX(), getCenter().getX(), SPRITE_HEIGHT / 2));
-
+  }
+  
+  public void init() {
+    
   }
 
   public Vector2f getCenter() {
@@ -31,10 +34,9 @@ public class Icecream extends Entity {
   @Override
   public boolean update(int delta, World world) {
     getPosition().add(getVelocity());
+    getBoundingBox().setLocation(getPosition());
 
-    getBoundingBox().setCenterX(getCenter().x);
-    getBoundingBox().setCenterY(getCenter().y);
-    return false;
+    return getShouldBeRemoved() || false;
   }
 
   @Override

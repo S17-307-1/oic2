@@ -9,7 +9,7 @@ import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 
 public class InGameView extends View {
-  private World world = new World();
+  private World world;
 
   @Override
   void initContinue() {
@@ -25,14 +25,23 @@ public class InGameView extends View {
 
   @Override
   public void update(int delta) {
-    world.update(delta);
+    if (world == null) {
+      world = new World();
+    }
+    boolean gameOver = world.update(delta);
+    if (gameOver) {
+      world = null;
+      stateBasedGame.enterState(OperationIceCream.MAIN_MENU);
+    }
     super.update(delta);
   }
 
   @Override
   public void render(Graphics graphics) {
     graphics.setBackground(Color.white);
-    world.render(graphics);
+    if (world != null) {
+      world.render(graphics);
+    }
     scene.render(graphics);
   }
 }
