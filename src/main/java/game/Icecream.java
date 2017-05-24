@@ -21,14 +21,14 @@ public class Icecream extends Entity {
 
     setBoundingBox(new Circle(getCenter().getX(), getCenter().getX(), SPRITE_HEIGHT / 2));
   }
-  
+
   public void init() {
     // Icecream has no image assets to init
   }
 
   public Vector2f getCenter() {
-    return new Vector2f(getPosition().getX() + SPRITE_WIDTH / 2,
-        getPosition().getY() + SPRITE_HEIGHT / 2);
+    return new Vector2f(getPosition().getX() + SPRITE_WIDTH / 2f,
+        getPosition().getY() + SPRITE_HEIGHT / 2f);
   }
 
   @Override
