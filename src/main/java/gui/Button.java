@@ -69,7 +69,7 @@ public class Button extends GuiElement {
       Graphics graphics = defaultImage.getGraphics();
       graphics.setColor(Color.black);
       graphics.setFont(GuiString.BUTTON_FONT);
-      graphics.drawString(label, (labelWidth - GuiString.BUTTON_FONT.getWidth(label) + 20) / 2, 8);
+      graphics.drawString(label, (float) (labelWidth - GuiString.BUTTON_FONT.getWidth(label) + 20) / 2f, 8f);
       graphics.setLineWidth(4f);
       RoundedRectangle rect = new RoundedRectangle(2, 2, labelWidth + 16, labelHeight + 16, 10f);
       graphics.draw(rect);
@@ -82,7 +82,7 @@ public class Button extends GuiElement {
         graphics.setColor(Color.black);
         graphics.setFont(GuiString.BUTTON_FONT);
         graphics.drawString(label, 
-            (labelWidth - GuiString.BUTTON_FONT.getWidth(label) + 20) / 2, 8);
+            (float) (labelWidth - GuiString.BUTTON_FONT.getWidth(label) + 20) / 2f, 8f);
         graphics.setLineWidth(8f);
         rect = new RoundedRectangle(4, 4, labelWidth + 12, labelHeight + 12, 10f);
         graphics.draw(rect);
