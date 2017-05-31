@@ -2,6 +2,8 @@ package gui;
 
 import java.awt.geom.Point2D;
 
+import org.newdawn.slick.Color;
+
 public abstract class GuiElement implements GuiComponent {
   protected Point2D location;
   protected Point2D origin;
@@ -69,5 +71,15 @@ public abstract class GuiElement implements GuiComponent {
   @Override
   public boolean isHidden() {
     return isHidden;
+  }
+  
+  @Override
+  public void setValue(String value) {
+    //by default, no action
+  }
+
+  @Override
+  public void setColor(Color color) {
+    //by default, no action
   }
 }

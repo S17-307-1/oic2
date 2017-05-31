@@ -79,26 +79,26 @@ public class GameplaySettingsView extends View {
     
     GuiDivision carousels = new GuiDivision("");
     
-    Carousel tempCarousel = new Carousel("", 1, 20, 1, " Lives", 0, 0, 100);
+    Carousel tempCarousel = new Carousel(1, 20, 1, " Lives", 0, 0, 100);
     carousels.addComponent(tempCarousel);
     
-    tempCarousel = new Carousel("", 1, 20, 1, " Lives", 0, 0, 100);
+    tempCarousel = new Carousel(1, 20, 1, " Lives", 0, 0, 100);
     tempCarousel.shift(0, (int) (carousels.getBoundingBox().getHeight() + 20));
     carousels.addComponent(tempCarousel);
     
-    tempCarousel = new Carousel("", 1, 20, 1, " m/s", 0, 0, 100);
+    tempCarousel = new Carousel(1, 20, 1, " m/s", 0, 0, 100);
     tempCarousel.shift(0, (int) (carousels.getBoundingBox().getHeight() + 20));
     carousels.addComponent(tempCarousel);
     
-    tempCarousel = new Carousel("", 1, 20, 1, " m/s", 0, 0, 100);
+    tempCarousel = new Carousel(1, 20, 1, " m/s", 0, 0, 100);
     tempCarousel.shift(0, (int) (carousels.getBoundingBox().getHeight() + 20));
     carousels.addComponent(tempCarousel);
     
-    tempCarousel = new Carousel("", 1, 20, 1, "", 0, 0, 100);
+    tempCarousel = new Carousel(1, 20, 1, "", 0, 0, 100);
     tempCarousel.shift(0, (int) (carousels.getBoundingBox().getHeight() + 20));
     carousels.addComponent(tempCarousel);
     
-    tempCarousel = new Carousel("", 50, 200, 25, "%", 0, 0, 100);
+    tempCarousel = new Carousel(50, 200, 25, "%", 0, 0, 100);
     tempCarousel.shift(0, (int) (carousels.getBoundingBox().getHeight() + 20));
     carousels.addComponent(tempCarousel);
     

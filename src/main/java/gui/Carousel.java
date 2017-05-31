@@ -47,9 +47,9 @@ public class Carousel extends GuiElement {
     shiftCurrent(false);
   }
   
-  public Carousel(String id, int rangeFrom, int rangeTo, int increment, String suffix, 
+  public Carousel(int rangeFrom, int rangeTo, int increment, String suffix, 
       int coordX, int coordY, int width) {
-    super(id);
+    super("");
     genericConstructor(coordX, coordY, width);
     this.rangeFrom = rangeFrom;
     this.rangeTo = rangeTo;

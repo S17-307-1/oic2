@@ -37,10 +37,10 @@ public class AudioSettingsView extends View {
     
     GuiDivision carousels = new GuiDivision("");
     
-    Carousel tempCarousel = new Carousel("", 0, 100, 1, "%", 0, 0, 100);
+    Carousel tempCarousel = new Carousel(0, 100, 1, "%", 0, 0, 100);
     carousels.addComponent(tempCarousel);
     
-    tempCarousel = new Carousel("", 0, 100, 1, "%", 0, 0, 100);
+    tempCarousel = new Carousel(0, 100, 1, "%", 0, 0, 100);
     tempCarousel.shift(0, (int) (carousels.getBoundingBox().getHeight() + 20));
     carousels.addComponent(tempCarousel);
     

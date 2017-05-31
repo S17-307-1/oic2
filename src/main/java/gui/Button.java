@@ -168,12 +168,6 @@ public class Button extends GuiElement {
   }
 
   @Override
-  public void setValue(String value) {}
-
-  @Override
-  public void setColor(Color color) {}
-
-  @Override
   public Rectangle2D getBoundingBox() {
     return new Rectangle2D.Double(clickableArea.getX(), clickableArea.getY(),
         clickableArea.getWidth(), clickableArea.getHeight());

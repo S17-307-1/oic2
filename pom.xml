@@ -21,6 +21,11 @@
       **/src/main/java/screen/**,
       **/src/main/java/view/**
     </sonar.coverage.exclusions>
+    <sonar.exclusions>
+      **/src/main/java/main/**,
+      **/src/main/java/screen/**,
+      **/src/main/java/view/**
+    </sonar.exclusions>
   </properties>
   
   <dependencies>
