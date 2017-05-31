@@ -5,7 +5,6 @@ import java.awt.geom.Rectangle2D;
 
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
-import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
@@ -68,16 +67,12 @@ public class Carousel extends GuiElement {
     Shape tempMouseArea = new Rectangle(coordX, coordY, 
         leftArrow.getWidth(), leftArrow.getHeight());
     decreaseBtn = new Button("", tempMouseArea, leftArrow, leftArrow);
-    decreaseBtn.setClickEvent(() -> {
-      shiftCurrent(false);
-    });
+    decreaseBtn.setClickEvent(() -> shiftCurrent(false));
     
     tempMouseArea = new Rectangle(coordX + leftArrow.getWidth() + width, coordY, 
         rightArrow.getWidth(), rightArrow.getHeight());
     increaseBtn = new Button("", tempMouseArea, rightArrow, rightArrow);
-    increaseBtn.setClickEvent(() -> {
-      shiftCurrent(true);
-    });
+    increaseBtn.setClickEvent(() -> shiftCurrent(true));
     
     totalWidth = width + 2 * leftArrow.getWidth();
     label = new GuiString("", "", 0, 0);
@@ -160,14 +155,6 @@ public class Carousel extends GuiElement {
   @Override
   public void update(Input input, boolean isLeftMousePressed) {
     scene.update(input, isLeftMousePressed);
-  }
-
-  @Override
-  public void setValue(String value) {
-  }
-
-  @Override
-  public void setColor(Color color) {
   }
 
   @Override

@@ -48,15 +48,14 @@ public class GuiTextField extends GuiElement {
   }
 
   @Override
-  public void update(Input input, boolean isLeftMousePressed) {}
+  public void update(Input input, boolean isLeftMousePressed) {
+    //Text field update is handled by SlickUI
+  }
 
   @Override
   public void setValue(String value) {
     textField.setText(value);
   }
-
-  @Override
-  public void setColor(Color color) {}
 
   @Override
   public Rectangle2D getBoundingBox() {

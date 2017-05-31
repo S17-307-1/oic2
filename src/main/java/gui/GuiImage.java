@@ -5,7 +5,6 @@ import java.awt.geom.Rectangle2D;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 
-import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
@@ -44,13 +43,9 @@ public class GuiImage extends GuiElement {
   }
 
   @Override
-  public void update(Input input, boolean isLeftMousePressed) {}
-
-  @Override
-  public void setValue(String value) {}
-
-  @Override
-  public void setColor(Color color) {}
+  public void update(Input input, boolean isLeftMousePressed) {
+    //no need for updating an image
+  }
 
   @Override
   public Rectangle2D getBoundingBox() {

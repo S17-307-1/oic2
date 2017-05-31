@@ -100,11 +100,8 @@ public class IFrame extends GuiContainer {
   private boolean inBounds(Input input) {
     final int mouseX = input.getMouseX();
     final int mouseY = input.getMouseY();
-    if (location.getX() <= mouseX && mouseX <= location.getX() + width && location.getY() <= mouseY
-        && mouseY <= location.getY() + width) {
-      return true;
-    }
-    return false;
+    return (location.getX() <= mouseX && mouseX <= location.getX() + width && location.getY() <= mouseY
+        && mouseY <= location.getY() + width);
   }
 
   @Override

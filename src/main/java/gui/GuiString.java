@@ -10,14 +10,16 @@ import org.newdawn.slick.Input;
 import org.newdawn.slick.TrueTypeFont;
 
 public class GuiString extends GuiElement {
+  private static final String FONT_NAME = "Dialog";
+  
   public static final TrueTypeFont DEFAULT_FONT =
-      new TrueTypeFont(new Font("Dialog", Font.PLAIN, 14), true);
+      new TrueTypeFont(new Font(FONT_NAME, Font.PLAIN, 14), true);
   public static final TrueTypeFont HEADER_FONT =
-      new TrueTypeFont(new Font("Dialog", Font.BOLD, 32), true);
+      new TrueTypeFont(new Font(FONT_NAME, Font.BOLD, 32), true);
   public static final TrueTypeFont TITLE_FONT =
       new TrueTypeFont(new Font("Arial", Font.BOLD, 50), true);
   public static final TrueTypeFont BUTTON_FONT =
-      new TrueTypeFont(new Font("Dialog", Font.BOLD, 28), true);
+      new TrueTypeFont(new Font(FONT_NAME, Font.BOLD, 28), true);
 
   private String[] content;
   private Color color = Color.black;
@@ -98,7 +100,9 @@ public class GuiString extends GuiElement {
   }
 
   @Override
-  public void update(Input input, boolean isLeftMousePressed) {}
+  public void update(Input input, boolean isLeftMousePressed) {
+    //GuiString does not accept update input
+  }
 
   @Override
   public Rectangle2D getBoundingBox() {
