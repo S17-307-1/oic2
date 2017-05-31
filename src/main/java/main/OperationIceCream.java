@@ -68,6 +68,6 @@ public class OperationIceCream extends StateBasedGame {
 
   @Override
   public void initStatesList(GameContainer container) throws SlickException {
-    enterState(IN_GAME);
+    enterState(MAIN_MENU);
   }
 }

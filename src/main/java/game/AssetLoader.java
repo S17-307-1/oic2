@@ -1,9 +1,13 @@
 package game;
 
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 
 public class AssetLoader {
+  private static final Logger LOGGER = Logger.getLogger(AssetLoader.class.getName());
+  
   private static Image player;
   private static Image enemy;
   private static Image tile1;
@@ -21,13 +25,13 @@ public class AssetLoader {
     try {
       player = new Image("res/player/manOld_gun.png");
     } catch (SlickException e) {
-      e.printStackTrace();
+      LOGGER.log(Level.FATAL, e.toString(), e);
     }
 
     try {
       enemy = new Image("res/enemy/robot1_hold.png");
     } catch (SlickException e) {
-      e.printStackTrace();
+      LOGGER.log(Level.FATAL, e.toString(), e);
     }
 
     try {
@@ -38,7 +42,7 @@ public class AssetLoader {
       tile5 = new Image("res/tile/tile_05.png");
       tile6 = new Image("res/tile/tile_06.png");
     } catch (SlickException e) {
-      e.printStackTrace();
+      LOGGER.log(Level.FATAL, e.toString(), e);
     }
   }
 
@@ -60,6 +64,8 @@ public class AssetLoader {
         return tile5;
       case TILE_6:
         return tile6;
+      default:
+        LOGGER.log(Level.ERROR, "Unrecognized name: " + name);
     }
     return null;
   }
