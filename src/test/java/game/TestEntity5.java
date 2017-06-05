@@ -6,7 +6,7 @@ import org.junit.Test;
 import org.newdawn.slick.geom.Circle;
 
 //Stephanie Lascola
-public class EntityTest5 {
+public class TestEntity5 {
 
   @Test
   public void testGetHeight() {

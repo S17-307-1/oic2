@@ -8,7 +8,7 @@ import org.newdawn.slick.geom.Shape;
 import org.newdawn.slick.geom.Vector2f;
 
 //Collin Dutter
-public class EntityTest2 {
+public class TestEntity2 {
 
   @Test
   public void testGetBoundingBox() {

@@ -6,7 +6,7 @@ import org.junit.Test;
 import org.newdawn.slick.geom.Circle;
 
 //Sean Slater
-public class EntityTest3 {
+public class TestEntity3 {
 
   @Test
   public void testGetWidth() {

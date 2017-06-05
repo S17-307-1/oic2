@@ -5,7 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 //Megan Pieczynski
-public class UtilTest4 {
+public class TestUtil4 {
 
   @Test
   public void testConstrain2() {

@@ -5,9 +5,9 @@ import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
-@SuiteClasses({ EntityTest6.class, TestWorld6.class })
+@SuiteClasses({ TestEnemy1.class, TestWorld1.class })
 
-//Anthony Delgado
-public class SomeTests6 {
+//John Bradbury
+public class Tests1 {
 
 }

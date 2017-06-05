@@ -6,7 +6,7 @@ import org.junit.Test;
 import org.newdawn.slick.geom.Vector2f;
 
 //Arya Karnik
-public class EntityTest7 {
+public class TestEntity7 {
 
   @Test
   public void testSetPosition() {
