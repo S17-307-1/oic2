@@ -12,8 +12,6 @@ import org.apache.log4j.Logger;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.geom.Vector2f;
 
-import gui.Button;
-
 public class World {
   private static final Logger LOGGER = Logger.getLogger(World.class.getName());
   
