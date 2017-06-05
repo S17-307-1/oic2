@@ -13,6 +13,7 @@ public class BackgroundTile {
   private Image sprite;
   private Vector2f position = new Vector2f(0, 0);
   public static final int TILE_SIZE = 64;
+  private int size = 64;
 
   public BackgroundTile() {
     Random rand = new Random();
@@ -55,6 +56,9 @@ public class BackgroundTile {
   private Image scrambleImage(Image sp) {
     double rand = Math.random();
 
+    if (sp == null) {
+      return null;
+    }
     if (rand <= .25) {
       return sp.getFlippedCopy(false, false);
     } else if (rand > .25 && rand < .5) {
@@ -67,11 +71,15 @@ public class BackgroundTile {
   }
 
   public int getWidth() {
-    return TILE_SIZE;
+    return size;
   }
 
   public int getHeight() {
-    return TILE_SIZE;
+    return size;
+  }
+  
+  public void setSize(int size) {
+    this.size = size;
   }
 
   public Vector2f getCenter() {

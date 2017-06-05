@@ -22,7 +22,9 @@ public class Player extends Entity {
   @Override
   public void init() {
     setSprite(AssetLoader.getAsset(AssetName.PLAYER));
-    setBoundingBox(new Circle(getCenter().getX(), getCenter().getY(), getSprite().getWidth() / 2));
+    if (getSprite() != null) {
+      setBoundingBox(new Circle(getCenter().getX(), getCenter().getY(), getSprite().getWidth() / 2));
+    }
   }
 
   @Override

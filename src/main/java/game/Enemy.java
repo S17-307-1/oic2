@@ -21,11 +21,16 @@ public class Enemy extends Entity {
   @Override
   public void init() {
     setSprite(AssetLoader.getAsset(AssetName.ENEMY));
-    setBoundingBox(new Circle(getCenter().getX(), getCenter().getY(), getSprite().getWidth() / 2));
+    if (getSprite() != null) {
+      setBoundingBox(new Circle(getCenter().getX(), getCenter().getY(), getSprite().getWidth() / 2));
+    }
   }
 
   @Override
   public boolean update(int delta, World world) {
+    if (world == null) {
+      return false;
+    }
     Vector2f playerCenter = world.getPlayer().getCenter();
     Vector2f posDiff = playerCenter.sub(getCenter());
     setRotation((float) Math.atan2(posDiff.getY(), posDiff.getX()));
@@ -36,7 +41,9 @@ public class Enemy extends Entity {
     getVelocity().y = Util.constrain(yVel, -getMaxVelocity().getY(), getMaxVelocity().getY());
 
     getPosition().add(getVelocity());
-    getBoundingBox().setLocation(getPosition());
+    if (getBoundingBox() != null) {
+      getBoundingBox().setLocation(getPosition());
+    }
     
     for (Icecream ic : world.getIcecreams()) {
       if (this.intersects(ic)) {

@@ -7,10 +7,16 @@ import java.util.List;
 import java.util.ListIterator;
 import java.util.Random;
 
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.geom.Vector2f;
 
+import gui.Button;
+
 public class World {
+  private static final Logger LOGGER = Logger.getLogger(World.class.getName());
+  
   private Player player;
   private Camera camera = new Camera();
   private ArrayList<Entity> entities = new ArrayList<>();
@@ -23,7 +29,6 @@ public class World {
   public World() {
     player = new Player();
     player.init();
-
   }
 
   public void render(Graphics g) {
@@ -44,7 +49,12 @@ public class World {
   }
 
   public boolean update(int delta) {
-    boolean playerDead = player.update(delta, this);
+    boolean playerDead = false;
+    try {
+      playerDead = player.update(delta, this);
+    } catch (Exception e) {
+      LOGGER.log(Level.INFO, e.toString(), e);
+    }
     if (playerDead) {
       return true;
     }
