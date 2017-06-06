@@ -22,7 +22,8 @@ public class Enemy extends Entity {
   public void init() {
     setSprite(AssetLoader.getAsset(AssetName.ENEMY));
     if (getSprite() != null) {
-      setBoundingBox(new Circle(getCenter().getX(), getCenter().getY(), getSprite().getWidth() / 2));
+      setBoundingBox(
+          new Circle(getCenter().getX(), getCenter().getY(), getSprite().getWidth() / 2));
     }
   }
 
@@ -44,7 +45,7 @@ public class Enemy extends Entity {
     if (getBoundingBox() != null) {
       getBoundingBox().setLocation(getPosition());
     }
-    
+
     for (Icecream ic : world.getIcecreams()) {
       if (this.intersects(ic)) {
         ic.setShouldBeRemoved(true);
@@ -52,9 +53,9 @@ public class Enemy extends Entity {
       }
     }
     if (this.intersects(world.getPlayer())) {
-     world.getPlayer().setShouldBeRemoved(true);
+      world.getPlayer().setShouldBeRemoved(true);
     }
-    
+
     return false;
   }
 
