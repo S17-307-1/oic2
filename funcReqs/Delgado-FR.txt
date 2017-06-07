@@ -1,3 +1,0 @@
-1. The system shall pause the game upon user request.
-2. The system shall stop the game when the player loses.
-3. The system shall allow the player to restart the game.

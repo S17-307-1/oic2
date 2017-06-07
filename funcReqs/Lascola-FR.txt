@@ -1,5 +1,0 @@
-The system shall display a title screen on the first screen the user sees.
-The system shall display the user's life count in the bottom right corner.
-The system shall save the user's progress at the end of each level.
-The system shall allow the user to pause the game during each level.
-The system shall display the user's score at the end of each level.

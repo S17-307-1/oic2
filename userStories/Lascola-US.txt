@@ -1,3 +1,0 @@
-As a player, I want customization for my character, so I can enjoy a more personalized game experience.
-As a beginning player, I want a tutorial mode, so I am not lost and unmotivated to continue playing.
-As a player, I want multiple levels, so I can play the game longer and more regularly.

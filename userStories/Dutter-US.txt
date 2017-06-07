@@ -1,3 +1,0 @@
-1. As a competitive player, I want an online leaderboard system so I can compare my scores against my friends.
-2. As a serious gamer, I want to be able to customize my graphics settings so I can adjust how the game performs and looks.
-3. As a creative person, I want a map-maker tool so I can make and share my own maps.
