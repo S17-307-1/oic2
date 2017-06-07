@@ -10,6 +10,7 @@ public class Camera {
   private float scale = 1.0f;
 
   public void update(Player player) {
+    System.out.println("Hello");
     getPosition().add(player.getVelocity());
   }
 
